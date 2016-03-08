@@ -1,0 +1,13 @@
+*.zip
+*.rar
+*.via
+*.tmp
+*.err
+
+/zip-box
+zip-box/
+/js.txt
+
+!/readme.txt
+
+/createjs-2015.11.26.min.js
