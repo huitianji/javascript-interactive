@@ -1,0 +1,32 @@
+http://www.cnblogs.com/snandy/archive/2011/03/12/1980444.html
+ 1>:
+ function setStyle(obj,css){
+    for(var attr in css){
+        obj.style[attr] = css[attr]
+    }
+}
+例：setStyle(boxct,{width:"200px",height:"200px"});
+
+>2--cssText
+function setStyle2(ele,strCss){
+    var sty = ele.style;
+    sty.cssText = sty.cssText + strCss;
+}
+
+ function setStyle3(el, strCss){
+        function endsWith(str, suffix) {
+            var l = str.length - suffix.length;
+            //return l >= 0 && str.indexOf(suffix, l) == l;
+            //console.log(str.length +"=="+ suffix.length+"=="+str.indexOf(suffix, l)+"="+str+"="+suffix+"");
+            console.log("str=["+str+"]");
+            console.log("suffix="+suffix);
+            console.log(str.indexOf(suffix,0));
+            console.log(str.indexOf(suffix, l) == l);
+        }
+        var sty = el.style,
+                cssText = sty.cssText;
+        if(!endsWith(cssText, ';')){
+            cssText += ';';
+        }
+        sty.cssText = cssText + strCss;
+    }
