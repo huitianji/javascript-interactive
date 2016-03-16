@@ -1,0 +1,12 @@
+
+//命名条例
+tofixed
+数组：a           Array;
+布尔值：b         Boolean;
+浮点数：f         Float;
+函数：fn          Function;
+整数：i           Integer;
+对象：o           Object;
+正则表达式：re    RegExp;
+字符串：s         String;
+变体变量：v       Variant;
