@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<div id="oDiv" style="width: 200px;height: 100px;background-color: green;"></div>
+<script>
+    /*
+    *
+    *cssSty(oDiv,"width","100px")
+    *
+    * */
+    function cssSty(){
+        if(arguments.length == 2){//两个参数获取
+            return arguments[0].style[arguments[1]]
+        }else{
+            return arguments[0].style[arguments[1]] = arguments[2];
+        }
+    }
+    var oDiv = document.getElementById("oDiv");
+
+    //修改版
+    function cssSty2(obj,name,value){
+        if(arguments.length == 2){
+            return obj.style[name];
+        }else{
+            return obj.style[name] = value;
+        }
+    }
+//    alert(cssSty2(oDiv,"width"));
+//    document.write(cssSty2(oDiv,"width","400px"));
+</script>
+</body>
+</html>

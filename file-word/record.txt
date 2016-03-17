@@ -10,3 +10,7 @@ tofixed
 正则表达式：re    RegExp;
 字符串：s         String;
 变体变量：v       Variant;
+
+
+真：true /非零数字/非空字符串/非空对象
+假：false/数字零/空字符串/空对象null/undefined

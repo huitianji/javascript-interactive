@@ -10,7 +10,45 @@
     //1.number/string/boolean/fun/object/undefined
     //isNaN  //判断一个是不是数
 //    console.log(parseInt())
-
+    var a=2;
+//    switch(a){
+//        case 1:
+//            document.write("ok==1");
+//            break;
+//        case 2:
+//            document.write("222");
+//            break;
+//        default :
+//            document.write("defatul");
+//    }
+//    while(a<3){
+//
+//        document.write(a+"<br>");
+//        a++;
+//
+//    }
+//    console.log(a)
+    function oM(){
+        if(a == 2){
+            return;
+            document.write("s");
+        }else{
+            document.write("s=2");
+        }
+    }
+//    oM();
+    function show(){
+        return 12;
+    }
+//    alert(show());
+    function sum(){
+        var result = 0;
+        for(var i = 0,len = arguments.length;i<len;i++){
+            result += arguments[i];
+        }
+        return result;
+    }
+    alert(sum(2,3));
 </script>
 </body>
 </html>

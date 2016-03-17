@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>取非行间的样式</title>
+    <style type="text/css">
+        #oDiv{
+            width: 200px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv" style="font-size: 15px;" ></div>
+<script>
+    /*
+    *
+    *   currentStyle  [IE]
+    *   例：obj.currentStyle.width
+    *   getComputedStyle [chrome/ff]
+    *   getComputedStyle(obj,null).width
+    *   getComputedStyle(oDiv,false).width    //个人习惯
+    * undefined   假
+    * */
+    var oDiv = document.getElementById("oDiv");
+    function getStyle(obj,name){
+        if(obj.currentStyle){
+            return obj.currentStyle[name];
+        }else{
+            return getComputedStyle(obj,false)[name];
+        }
+    }
+    //alert(getStyle(oDiv,"font-size"));
+    var arr = [1,2,3,4,5];
+    arr.splice(0,0,"a","b");
+   // console.log(arr);
+    function sort(a,b){
+        return a-b;
+    }
+</script>
+</body>
+</html>
