@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>定时器</title>
+    <style type="text/css">
+        body{
+            width: 600px;
+            margin: 50px auto;
+        }
+        img{
+            width: 20px;
+            height: 20px;;
+            transition: all 500ms ease;
+        }
+        img:hover{
+
+        }
+        .image{
+            width: 40px;;
+            transform: rotateX(180deg);
+        }
+        .oDiv img{
+
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+<body style="background-color: gray;">
+<!--<div class="oDiv">-->
+    <!--<img src="../images/f.png">-->
+<!--</div>-->
+<img src="../images/0.png">
+<img src="../images/1.png">
+:
+<img src="../images/2.png">
+<img src="../images/3.png">
+:
+<img src="../images/4.png">
+<img src="../images/5.png">
+<script>
+    function toDou(n){
+        if(n<10){
+            return "0"+ n;
+        }else{
+            return "" + n;
+        }
+    }
+    var aImg = document.getElementsByTagName("img");
+    function tick(){
+        var oDate = new Date();
+
+        var str = toDou(oDate.getHours()) + toDou(oDate.getMinutes()) + toDou(oDate.getSeconds());
+        for(var i = 0,len = aImg.length;i<len;i++){
+            aImg[i].src = "../images/"+str.charAt(i)+".png";
+            aImg[i].className = "image";
+        }
+    }
+    setInterval(tick,1000);
+    tick();
+   // alert(str);
+
+
+    //字符串下      charAt(0);
+    //str[i] ie7里面不兼容
+</script>
+</body>
+</html>
