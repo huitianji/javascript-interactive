@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>搜索-筛选</title>
+    <style type="text/css">
+        body{
+            width: 800px;
+            margin: 100px auto;
+        }
+        table{
+            width: 600px;;
+        }
+        td{
+            line-height: 20px;
+            padding: 5px;;
+        }
+    </style>
+    <script>
+        /*
+        *str.search(要查找的字符串)
+        * appendChild  1.把元素从原有的父节点上删掉，2.添加到新的父级节点
+        *
+        * */
+        window.onload = function(){
+            var oTab = document.getElementById("tab1");
+            var oBtn = document.getElementById("btn");
+            var arrTab = [];
+            oBtn.onclick = function(){
+
+                for(var i = 0,len = oTab.tBodies[0].rows.length;i<len;i++){
+                    arrTab.push(oTab.tBodies[0].rows[i]);
+                }
+                arrTab.sort(function(td1,td2){
+                    var n1 = td1.cells[0].innerHTML;
+                    var n2 = td2.cells[0].innerHTML;
+                    if(n1>n2){
+                        return n1 - n2;
+                    }else if(n1<n2){
+                        return n2 -n1;
+                    }
+                });
+                for(var i = 0,len = arrTab.length;i<len;i++){
+                    oTab.tBodies[0].appendChild(arrTab[i]);
+                }
+
+            }
+
+
+
+        }
+    </script>
+</head>
+<body>
+<div>
+    <input type="button" value="排序" id="btn">
+    <br><br>
+</div>
+<table id="tab1" width="100%" border="1" cellspacing="0" cellpadding="0">
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>5</td>
+            <td>张三</td>
+            <td>28</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Blue</td>
+            <td>21</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>李四</td>
+            <td>21</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>张明</td>
+            <td>25</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>发布</td>
+            <td>25</td>
+            <td></td>
+        </tr>
+    </tbody>
+    <tfoot style="display: none;">
+        <td></td>
+    </tfoot>
+</table>
+<script>
+    /*
+    * oTab.tBodies[0].row[1].cells[0]
+    * */
+
+
+ </script>
+</body>
+</html>

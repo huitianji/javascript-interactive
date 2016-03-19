@@ -14,3 +14,7 @@ tofixed
 
 真：true /非零数字/非空字符串/非空对象
 假：false/数字零/空字符串/空对象null/undefined
+
+
+form.onsubmit = function(){}
+form.onreset = function(){}

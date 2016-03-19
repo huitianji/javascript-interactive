@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DOM-1</title>
+    <style type="text/css">
+        #oul{
+            /*position: absolute;*/
+        }
+    </style>
+</head>
+<body>
+<div style="position: relative">
+    <ul id="oUl">
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script>
+    /*
+    *
+    *childNodes
+    * nodeType ==   3文本节点
+    * nodeType == 1  元素节点
+    * children
+    * parentNode   父节点
+    * offsetParent
+    *nodeName    tagName
+    *
+    *firstChild         ie
+    *firstElementChild   ff/chrome
+    *
+    *setAttribute(name,value)
+    * getAttribute(name);
+    * removeAttribute
+    * */
+var oUl = document.getElementById("oUl");
+for(var i = 0,len = oUl.childNodes.length;i<len;i++){
+    if(oUl.childNodes[i].nodeType == 1){
+        //oUl.childNodes[i].style.background="red"
+    }
+}
+    //alert(oUl.childNodes[0]);
+    //alert(oUl.parentNode)
+    //alert(oUl.childNodes[1].tagName)
+    alert(oUl.firstElementChild.style.background = "red")
+</script>
+</body>
+</html>

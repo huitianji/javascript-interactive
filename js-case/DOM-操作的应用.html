@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>DOM操作的应用</title>
+    <style type="text/css">
+        body{
+            width: 800px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="oTxt">
+    <input type="button" id="btn" value="创建">
+</div>
+<ul id="oUl">
+    <li>1</li>
+</ul>
+<script>
+    /*
+    *insertBefore(子节点，在谁之前）
+    *
+    * */
+    var oBtn = document.getElementById("btn");
+    var oUl = document.getElementById("oUl");
+    var oTxt = document.getElementById("oTxt");
+
+    oBtn.onclick = function(){
+        var oLi = document.createElement("li");
+//        var aLi = oUl.getElementsByTagName("li");
+        var ooLi = oUl.children;
+        oLi.innerHTML = oTxt.value;
+        oUl.appendChild(oLi);
+        oUl.insertBefore(oLi,ooLi[0]);
+    }
+
+
+
+
+</script>
+</body>
+</html>
