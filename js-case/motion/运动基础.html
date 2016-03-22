@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>运动基础</title>
+    <style type="text/css">
+        #odiv{
+            position: absolute;
+            left: 20px;
+            top:100px;;
+            width: 100px;height: 100px;
+            background-color: green;;
+        }
+    </style>
+</head>
+<body>
+<div id="odiv"></div>
+<script>
+var time = null;
+function startMove(){
+    var oDiv = document.getElementById("odiv");
+    clearInterval(time);
+    time = setInterval(function(){
+        var speed = 1;
+        if(oDiv.offsetLeft  == 300){
+            clearInterval(time);
+        }else{
+            oDiv.style.left = oDiv.offsetLeft + speed + "px";
+        }
+
+    },30);
+}
+    startMove();
+</script>
+</body>
+</html>

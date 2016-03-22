@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        div{
+            float:left;
+            width: 100px; height: 100px;
+            margin-left:20px;
+            background-color: green;
+            border:2px solid #000;
+            font-size: 12px;;
+        }
+    </style>
+</head>
+<body>
+<div id="box1" ></div>
+<div id="box2"></div>
+<div id="box3">测试</div>
+<script>
+var aDiv = document.getElementsByTagName("div");
+    for(var i = 0,len = aDiv.length;i<len;i++){
+        aDiv[i].timer = null;
+        aDiv[0].onmouseover = function(){
+            startMove(this,"height",200);
+        }
+        aDiv[0].onmouseout = function(){
+            startMove(this,"height",100);
+        }
+        aDiv[1].onmouseover = function(){
+            startMove(this,"width",200);
+        }
+        aDiv[1].onmouseout = function(){
+            startMove(this,"width",100);
+        }
+        aDiv[2].onmouseover = function(){
+            startMove(this,"font-size",30);
+        }
+        aDiv[2].onmouseout = function(){
+            startMove(this,"font-size",12);
+        }
+    }
+
+    function startMove(obj,attr,iTarget){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function(){
+            var cur = parseInt(getStyle(obj,attr));
+            var speed = (iTarget - cur)/8;
+            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+            if(cur == iTarget){
+                clearInterval(obj.timer);
+            }else{
+                obj.style[attr] = cur + speed + "px";
+            }
+
+        },30);
+    }
+    function getStyle(obj,name){
+        if(obj.currentStyle){
+            return obj.currentStyle[name];
+        }else{
+            return getComputedStyle(obj,false)[name];
+        }
+    }
+</script>
+</body>
+</html>

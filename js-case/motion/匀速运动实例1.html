@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body,div{
+            margin: 0px;
+            padding: 0px;
+        }
+        #box{
+            position: absolute;
+            top:100px;
+            left:0px;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        #line{
+            position: absolute;
+            left: 300px;
+            width: 1px;
+            height: 500px;
+            background-color: #808080;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="line"></div>
+<script>
+    var time = null;
+    var oDiv = document.getElementById("box");
+    function startMove(iTarget){
+        clearInterval(time);
+        time = setInterval(function(){
+            var speed = 0;
+            if(oDiv.offsetLeft > iTarget){
+                speed = -7;
+            }else if(oDiv.offsetLeft < iTarget){
+                speed = 7;
+            }
+            if(Math.abs(iTarget - oDiv.offsetLeft) < 7){//小于速度值
+                clearInterval(time);
+                oDiv.style.left = iTarget + "px";
+            }else{
+                oDiv.style.left = oDiv.offsetLeft + speed  + "px";
+            }
+
+        },30);
+    }
+    startMove(300);
+</script>
+</body>
+</html>

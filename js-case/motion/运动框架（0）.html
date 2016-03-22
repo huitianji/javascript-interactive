@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../js/js-mix.js"></script>
+    <style type="text/css">
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var oDiv = document.getElementById("box");
+    oDiv.onmouseover = function(){
+        var _this = this;
+        startMove(_this,"width","200",function(){
+            startMove(_this,"height","200");
+        });
+    }
+</script>
+</body>
+</html>

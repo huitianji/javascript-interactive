@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body{
+            margin:0px;
+            padding: 0px;
+        }
+        body{
+            margin-top: 100px;
+        }
+        #box{
+            position: absolute;
+            top:100px;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+        #line{
+            position: absolute;
+            left: 300px;
+            top:0px;
+            width: 1px;
+            height: 300px;
+            background-color: #000000;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<div id="line"></div>
+<script>
+    var oDiv = document.getElementById("box");
+    function startMove(){
+        setInterval(function(){
+            var speed = (300 - oDiv.offsetLeft)/8;
+            speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);//
+            oDiv.style.left = oDiv.offsetLeft + speed + "px";
+        },30);
+
+    }
+    startMove();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        div{
+            float:left;
+            width: 100px; height: 100px;
+            margin-left:20px;
+            background-color: green;
+            border:2px solid #000;
+            font-size: 12px;;
+            filter:alpha(opacity = 30);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+<div id="box1" ></div>
+<input type="text" id="txt">
+<script>
+var aDiv = document.getElementsByTagName("div");
+    for(var i = 0,len = aDiv.length;i<len;i++){
+        aDiv[i].timer = null;
+        aDiv[0].onmouseover = function(){
+            startMove(this,"opacity",100);
+        }
+        aDiv[0].onmouseout = function(){
+            startMove(this,"opacity",30);
+        }
+    }
+
+    function startMove(obj,attr,iTarget){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function(){
+            var cur = 0;
+            if(attr == "opacity"){
+                cur = Math.round(parseFloat(getStyle(obj, attr))*100);
+            }else{
+                cur = parseInt(getStyle(obj,attr));
+            }
+            var speed = (iTarget - cur)/8;
+            speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+            if(cur == iTarget){
+                clearInterval(obj.timer);
+            }else{
+                if(attr == "opacity"){
+                    obj.style.filter = "alpha(opactiy = "+ (cur + speed) +")";
+                    obj.style.opacity = (cur + speed)/100;
+                    document.getElementById("txt").value = obj.style.opacity;
+                }else{
+                    obj.style[attr] = cur + speed + "px";
+                }
+            }
+
+        },30);
+    }
+    function getStyle(obj,name){
+        if(obj.currentStyle){
+            return obj.currentStyle[name];
+        }else{
+            return getComputedStyle(obj,false)[name];
+        }
+    }
+</script>
+</body>
+</html>

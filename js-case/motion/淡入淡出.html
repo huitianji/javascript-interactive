@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>淡入淡出</title>
+    <style type="text/css">
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            filter:alpha(opacity = 30);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var alpha = 30;
+    var time = null;
+    var oDiv = document.getElementById("box");
+    function startMove(iTarget){
+        clearInterval(time);
+        time = setInterval(function(){
+            var speed = 0;
+            if(alpha > iTarget){
+                speed = -10;
+            }else{
+                speed = 10;
+            }
+            if(alpha == iTarget){
+                clearInterval(time);
+            }else{
+                alpha += speed;
+                oDiv.style.filter = "alpha(opacity = "+alpha+")";
+                oDiv.style.opacity = alpha/100;
+            }
+
+        },30)
+    }
+    oDiv.onmouseover = function(){
+        startMove(100);
+    }
+    oDiv.onmouseout = function(){
+        startMove(30);
+    }
+</script>
+</body>
+</html>
