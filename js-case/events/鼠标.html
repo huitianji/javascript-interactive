@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <style type="text/css">
+        #box{
+            position: absolute;
+
+            width: 100px;height: 100px;background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var oDiv = document.getElementById("box");
+    document.onmousemove = function(ev){
+        var oEvent = ev || event;
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        oDiv.style.top = oEvent.clientY + scrollTop + "px";
+        oDiv.style.left = oEvent.clientX + "px";
+        console.log(oEvent.clientY)
+    }
+    // window.pageYOffset ； Safari
+    function getPos(ev){
+        var scrollTop = document.documentElement.scrollTop || documenet.body.scrollTop;
+        var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        return {x:ev.clientX + scrollLeft,y:ev.clientY + scrollTop};
+    }
+</script>
+</body>
+</html>

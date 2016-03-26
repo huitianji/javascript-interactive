@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="txt">
+<script>
+    var oTxt = document.getElementById("txt");
+    oTxt.onkeydown = function(ev){
+        var oEvent = ev || event;
+        //0  -- 48
+        //9  -- 57
+        //backspace  -- 8
+        //|| oEvent.keyCode != 8
+        console.log(oEvent.keyCode);
+        if((oEvent.keyCode != 8 && oEvent.keyCode < 48) || oEvent.keyCode > 57 ){
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

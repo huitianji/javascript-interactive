@@ -38,7 +38,7 @@ function startMove(obj,attr,iTarget,fnEnd){
     },30);
 }
 function getStyle(obj,name){
-    if(obj.currentStyle){
+    if(obj.currentStyle){//ie
         return obj.currentStyle[name];
     }else{
         return getComputedStyle(obj,false)[name];
@@ -80,4 +80,10 @@ function startMove2(obj,json,fnEnd){
             }
         }
     },30);
+}
+//getPos   ===   scrollTop
+function getPos(ev){
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+    return {x:ev.clientX + scrollLeft,y:ev.clientY + scrollTop};
 }

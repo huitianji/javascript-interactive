@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body,div{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            width: 800px;
+            margin: 50px auto;
+        }
+        #parent{
+            position: relative;
+            width: 600px;
+            height: 20px;
+            background-color: green;
+        }
+        #div1{
+            position: absolute;
+            left: 0px;
+            right:0px;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            cursor: pointer;
+        }
+        #box {
+            position: relative;
+           width: 200px; height: 200px;;
+            overflow: hidden;
+           border:1px solid #ccc;
+        }
+        #child{
+            position: absolute;
+            left: 0px;top:0px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="parent">
+    <div id="div1"></div>
+
+</div>
+<div id="box">
+    <div id="child">
+        北京去年拆除722座非法墓穴 整治殡葬行业秩序
+        美军宣布击毙IS二号人物 曾悬赏700万美元捉拿
+        上海女子卖房后遭遇楼市新政 失去买房资格
+        美国国务卿克里拎行李下飞机 普京:我不高兴
+        外交部回应中国游泳选手隐瞒使用兴奋剂事件北京去年拆除722座非法墓穴 整治殡葬行业秩序
+        美军宣布击毙IS二号人物 曾悬赏700万美元捉拿
+        上海女子卖房后遭遇楼市新政 失去买房资格
+        美国国务卿克里拎行李下飞机 普京:我不高兴
+        外交部回应中国游泳选手隐瞒使用兴奋剂事件北京去年拆除722座非法墓穴 整治殡葬行业秩序
+        美军宣布击毙IS二号人物 曾悬赏700万美元捉拿
+        上海女子卖房后遭遇楼市新政 失去买房资格
+        美国国务卿克里拎行李下飞机 普京:我不高兴
+        外交部回应中国游泳选手隐瞒使用兴奋剂事件北京去年拆除722座非法墓穴 整治殡葬行业秩序
+        美军宣布击毙IS二号人物 曾悬赏700万美元捉拿
+        上海女子卖房后遭遇楼市新政 失去买房资格
+        美国国务卿克里拎行李下飞机 普京:我不高兴
+        外交部回应中国游泳选手隐瞒使用兴奋剂事件北京去年拆除722座非法墓穴 整治殡葬行业秩序
+        美军宣布击毙IS二号人物 曾悬赏700万美元捉拿
+        上海女子卖房后遭遇楼市新政 失去买房资格
+        美国国务卿克里拎行李下飞机 普京:我不高兴
+        外交部回应中国游泳选手隐瞒使用兴奋剂事件北京去年拆除722座非法墓穴 整治殡葬行业秩序
+        美军宣布击毙IS二号人物 曾悬赏700万美元捉拿
+        上海女子卖房后遭遇楼市新政 失去买房资格
+        美国国务卿克里拎行李下飞机 普京:我不高兴
+        外交部回应中国游泳选手隐瞒使用兴奋剂事件北京去年拆除722座非法墓穴 整治殡葬行业秩序
+        美军宣布击毙IS二号人物 曾悬赏700万美元捉拿
+        上海女子卖房后遭遇楼市新政 失去买房资格
+        美国国务卿克里拎行李下飞机 普京:我不高兴
+        外交部回应中国游泳选手隐瞒使用兴奋剂事件北京去年拆除722座非法墓穴 整治殡葬行业秩序
+        美军宣布击毙IS二号人物 曾悬赏700万美元捉拿
+        上海女子卖房后遭遇楼市新政 失去买房资格
+        美国国务卿克里拎行李下飞机 普京:我不高兴
+        外交部回应中国游泳选手隐瞒使用兴奋剂事件北京去年拆除722座非法墓穴 整治殡葬行业秩序
+        美军宣布击毙IS二号人物 曾悬赏700万美元捉拿
+        上海女子卖房后遭遇楼市新政 失去买房资格
+        美国国务卿克里拎行李下飞机 普京:我不高兴
+        外交部回应中国游泳选手隐瞒使用兴奋剂事件北京去年拆除722座非法墓穴 整治殡葬行业秩序
+        美军宣布击毙IS二号人物 曾悬赏700万美元捉拿
+        上海女子卖房后遭遇楼市新政 失去买房资格
+        美国国务卿克里拎行李下飞机 普京:我不高兴
+        外交部回应中国游泳选手隐瞒使用兴奋剂事件
+    </div>
+</div>
+<script>
+    var oDiv = document.getElementById("div1");
+    var oParent = document.getElementById("parent");
+    var oBox = document.getElementById("box");
+    var oChild = document.getElementById("child")
+    oDiv.onmousedown = function (ev){
+        var oEvent = ev || event;
+        var disX = oEvent.clientX - oDiv.offsetLeft;
+        var disY = oEvent.clientY - oDiv.offsetTop;
+        document.onmousemove = function(ev){
+            var oEvent = ev || event;
+            var l = oEvent.clientX - disX ;
+            var t = oEvent.clientY - disY ;
+
+            if(l<0){
+                l = 0;
+            }else if(l > oParent.offsetWidth - oDiv.offsetWidth ){
+                l = oParent.offsetWidth - oDiv.offsetWidth;
+            }
+            var scale = l/(oParent.offsetWidth - oDiv.offsetWidth);
+           document.title = l/(oParent.offsetWidth - oDiv.offsetWidth);
+
+            child.style.top = -(oChild.offsetHeight-oBox.offsetHeight)*scale + "px";
+            oDiv.style.left = l + "px";
+
+        }
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+        return false;
+    }
+</script>
+</body>
+</html>

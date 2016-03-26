@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../js/js-mix.js"></script>
+    <style type="text/css">
+        div{
+            position: absolute;
+            left: 0px; top:0px;;
+            width: 20px; height: 20px;background-color: green;;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+    var aDiv = document.getElementsByTagName("div");
+    document.onmousemove = function(ev){
+        for(var i = aDiv.length -1 ;i>0;i--){
+            aDiv[i].style.left = aDiv[i-1].offsetLeft + "px";
+            aDiv[i].style.top = aDiv[i-1].offsetTop + "px";
+        }
+        var pos = getPos(ev);
+        aDiv[0].style.left = pos.x + "px";
+        aDiv[0].style.top = pos.y + "px";
+
+    }
+
+</script>
+</body>
+</html>

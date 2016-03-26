@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="action">
+<script>
+    var oBtn = document.getElementById("btn");
+    //attachEvent(事件名，函数） IE
+    //detachEvent  解除绑定
+    /*
+    oBtn.attachEvent("onclick",function(){
+        alert("1")
+    });
+    oBtn.attachEvent("onclick",function(){
+        alert("2")
+    });
+    */
+    //addEventListener(事件名,函数，false)    //ff
+    //removeEventListener  解除绑定
+//    oBtn.addEventListener("click",function(){
+//        alert(1)
+//    },false);
+    function myAddEvent(obj,ev,fn){
+        if(obj.attachEvent){
+            obj.attachEvent("on"+ev,fn);
+        }else{
+            obj.addEventListener(ev,fn,false);
+        }
+    }
+    myAddEvent(oBtn,"click",function(){
+        //alert(1)
+    });
+</script>
+</body>
+</html>
