@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css"></style>
+</head>
+<body>
+<script>
+    /*
+    * wamp  小型的服务器
+    *
+    *
+    *get   通过网址
+    *         容量小
+    *         安全性很差
+    *         有缓存的
+    *
+    *         用于获取数据
+    *Post  不通过网址
+    *        容量大
+    *        安全性相对来说好一点。
+    *        没有缓存
+    *
+    *        用于上传数据
+    *
+    *
+    *
+    *
+    * console.log(a) //a is not defined  报错
+    * console.log(window.a) --->undefined
+    * */
+    //1.创建ajax对象
+    //var oAjax = new XMLHttpRequest();//非IE 6
+    //ie6  ActiveXObject("Microsoft.XMLHTTP");
+
+    if(window.XMLHttpRequest){
+        var oAjax = new XMLHttpRequest();
+    }else{
+        var oAjax = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    //2.链接服务器
+    //open(方法，文件名,异步传输); true:异步方式  false:除非网速超级快。才用这个false
+   // oAjax.open();
+    //3发送请求
+    //oAjax.send();
+    //4.接收返回
+    oAjax.onreadystatechange= function(){
+        //oAjax.readyState//浏览器和服务器进行到哪一步了
+        /*
+        * 0 (未初始化) 还没有调用open方法
+        * 1 (载入)已调用send()方法,正在发送请求
+        * 2 (载入完成)，send()方法完成,已收到全部响应内容
+        * 3 解析，正在解析响应内容
+        * 4 （完成）响应内容解析完成，可以在客户端调用了
+        *
+        * */
+        if(oAjax.readyState == 4){//读取完成
+            if(oAjax.status == 200){//学名http状态码 200---成功
+                alert("成功"+oAjax.responseText);
+            }
+        }
+    }
+
+ </script>
+</body>
+</html>
