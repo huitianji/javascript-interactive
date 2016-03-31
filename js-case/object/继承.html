@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function A(){
+        this.abc = 12;
+    }
+    A.prototype.show = function(){
+        alert(this.abc);
+    }
+    //继承A(属性的继承)
+    function B(){
+        //this->new B();
+        A.call(this);
+    }
+    //继承方法
+    //B.prototype = A.prototype;
+    for(var i in A.prototype){
+        B.prototype[i] = A.prototype[i];
+    }
+    B.prototype.fn = function(){
+        alert("abc");
+    }
+//    var p = new A();
+//    p.show();
+    var obj = new B();
+    var obj2 = new A();
+    obj.show();
+</script>
+</body>
+</html>

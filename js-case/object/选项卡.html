@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body{
+            width: 800px;
+            margin: 50px auto;
+        }
+        input{
+            background-color: #fff;;
+        }
+        input.active{
+            background-color: #ffff00;
+        }
+        #box div{
+            display: none;;
+            width: 200px;
+            height: 100px;
+            margin-top: 10px;
+            border:1px solid green;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="button" value="a" class="active">
+    <input type="button" value="b">
+    <input type="button" value="c">
+    <div style="display: block;">
+        aa
+    </div>
+    <div>
+        bbb
+    </div>
+    <div>
+        cc
+    </div>
+</div>
+<script>
+    var aBtn = document.getElementById("box").getElementsByTagName("input");
+    var aBox = document.getElementById("box").getElementsByTagName("div");
+    for(var i = 0,len = aBtn.length;i<len;i++){
+        aBtn[i].index = i;
+        aBtn[i].onclick =function(){
+            for(var i = 0,len = aBtn.length;i<len;i++){
+                aBtn[i].className = "";
+                aBox[i].style.display = "none";
+            }
+            this.className = "active";
+            aBox[this.index].style.display = "block";
+        }
+
+    }
+</script>
+</body>
+</html>

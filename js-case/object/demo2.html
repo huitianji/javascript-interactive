@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function CreateObj(name){
+
+//            系统做的：var this = new Object();
+
+        this.name = name
+
+        this.show = function(){
+            alert(this.name);
+        }
+
+//            系统做的：
+//            return this;
+
+    }
+    var p1 = new CreateObj("mang");
+   // p1.show();
+    var arr1 = new Array(1,2,3,4,5,6,7,8,9);
+    var arr2 = new Array(12,10,1);
+    Array.prototype.sum = function(){
+        var result = 0;
+        for(var i = 0,len = this.length;i<len;i++){
+            result += this[i];
+        }
+        return result;
+    }
+    console.log(arr1.sum());
+    console.log(arr2.sum());
+    console.log(arr1.sum === arr2.sum);
+</script>
+</body>
+</html>

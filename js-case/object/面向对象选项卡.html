@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body{
+            width: 800px;
+            margin: 50px auto;
+        }
+        input{
+            background-color: #fff;;
+        }
+        input.active{
+            background-color: #ffff00;
+        }
+        #box div{
+            display: none;;
+            width: 200px;
+            height: 100px;
+            margin-top: 10px;
+            border:1px solid green;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="button" value="a" class="active">
+    <input type="button" value="b">
+    <input type="button" value="c">
+    <div style="display: block;">
+        aa
+    </div>
+    <div>
+        bbb
+    </div>
+    <div>
+        cc
+    </div>
+</div>
+<script>
+    /*
+
+      构造函数  -》初始化整个对象{
+
+      }
+    *面向对象  【函数、变量】
+    * -》函数没有嵌套
+    * -》变量变成对象的属性
+    * ->函数变成对象的方法
+    * */
+    function TabSwitch(id){
+        var _this = this;
+        var oDiv = document.getElementById(id);
+
+        this.aBtn = oDiv.getElementsByTagName("input");
+        this.aBox = oDiv.getElementsByTagName("div");
+        for(var i = 0,len = this.aBtn.length;i<len;i++){
+            this.aBtn[i].index = i;
+            this.aBtn[i].onclick = function(){
+                _this.fnClick(this)
+            };
+        }
+    }
+   TabSwitch.prototype.fnClick = function(oBtn){
+        for(var i = 0,len = this.aBtn.length;i<len;i++){
+            this.aBtn[i].className = "";
+            this.aBox[i].style.display = "none";
+        }
+        oBtn.className = "active";
+        this.aBox[oBtn.index].style.display = "block";
+    }
+    new TabSwitch("box");
+</script>
+</body>
+</html>

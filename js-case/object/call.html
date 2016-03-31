@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function showM(){
+        alert(this);
+    }
+    //show() == show.call();
+
+
+
+    function show(a,b){
+        alert("this->"+this+"\n a->"+a+"\n b->"+b);
+    }
+    //show(12,5);// this->window
+    //show.call("abc",12,5)//this->abc,a=15,b=2;
+    show.call(this,12,5);//this-window
+</script>
+</body>
+</html>

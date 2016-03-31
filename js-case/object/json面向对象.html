@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<script>
+    /*
+    *命名空间
+    * 在公司里，把同一类的方法，包在一起
+    *
+    * */
+    var zx = {};
+     zx.op = {};
+     zx.mp = {};
+    function getName(){
+        console.log("this===this")
+    }
+
+    zx.op.getName = function(){
+        console.log("ok-op");
+    }
+    zx.mp.getName = function(){
+        console.log("mp");
+    }
+    getName();
+    zx.op.getName();
+    zx.mp.getName();
+
+    function show(){
+        alert(this);
+    }
+    //show();//this->window
+    //show.call();//this->window
+    //show.call(12)//this->12
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>引用</title>
+</head>
+<body>
+<script>
+    var arr1 = [1,2,3];
+    var arr2 = [];
+
+    for(var i in arr1){
+        arr2.push(arr1[i]);
+    }
+
+    arr2.push(4);
+    console.log(arr1);
+    console.log(arr2);
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //工厂模式
+    function createObj(name){//构造函数
+
+        var obj = new Object();
+        obj.name = name;
+
+        obj.showName = function(){
+            console.log(this.name);
+        }
+
+        return obj;
+
+    }
+    var p1 = createObj("wang");
+    p1.showName();
+
+
+
+//    工厂模式  没有new
+//函数重复。资源浪费
+
+    function show(){
+        alert(this);
+    }
+    /*
+    show();//window
+    new show();//object
+    */
+</script>
+</body>
+</html>
