@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    function setCookie(name,value,iDay){
+//        var oDate = new Date();
+//        oDate.setDate(oDate.getDate() + iDay);
+//        document.cookie = name + "=" + value + ";expires=" + iDay;
+//    }
+    function setCookie(name,value,iDay){
+        var oDate = new Date();
+        oDate.setDate(oDate.getDate() + iDay);
+        document.cookie = name + "=" + value + ";expires=" + oDate;
+    }
+    function getCookie(name){
+
+        var arr = document.cookie.split(";");
+//        console.log(arr)
+        for(var i = 0,len = arr.length;i<len;i++){
+            var arr1 = arr[i].split("=");
+            if(arr1[0] == name){
+                return arr1[1];
+            }
+        }
+        return "";
+    }
+    function removeCookie(names){
+        setCookie(names,1,-1)
+    }
+//    setCookie("username","username-vlue",2);
+//    setCookie("password","12345",1);
+//alert(document.cookie);
+//username=username-vlue; password=12345
+    removeCookie(" password");
+    console.log(document.cookie);
+</script>
+</body>
+</html>

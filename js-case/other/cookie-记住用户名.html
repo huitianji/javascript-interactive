@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body{
+            width: 800px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<form id="form" action="http://www.baidu.com">
+    <input type="text" value="" id="txt">
+    <br>
+    <input type="password" value="">
+    <br>
+    <input type="submit" value="submit">
+</form>
+<script>
+    /*1*/
+    function setCookie(name,value,iDay){
+        var oDate = new Date();
+        oDate.setDate(oDate.getDate() + iDay);
+        document.cookie = name + "=" + value + ";expires = " + oDate;
+    };
+    function getCookie(name){
+        var arr1 = document.cookie.split(";");
+        for(var i = 0,len = arr1.length;i<len;i++){
+            var arr2 = arr1[i].split("=");
+            if(arr2[0] == name){
+                return arr2[1];
+            }
+        }
+        return "";
+    }
+    function removeCookie(name){
+        setCookie(name,1,-1);
+    }
+    /*1-end*/
+    var oForm = document.getElementById("form");
+    var oTxt = document.getElementById("txt");
+    oForm.onsubmit = function(){
+        setCookie("username",oTxt.value,2);
+    }
+    oTxt.value = getCookie("username");
+    //alert(getCookie("username"));
+</script>
+</body>
+</html>

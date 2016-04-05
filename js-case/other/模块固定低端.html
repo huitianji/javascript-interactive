@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body{
+            height: 2000px;
+        }
+        #div1{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<script>
+    /*
+    *window.onresize
+    *onresize 事件会在窗口或框架被调整大小时发生。
+    *
+    * */
+    var oDiv = document.getElementById("div1");
+     window.onscroll = window.onresize = function(){
+        var scrollTop = document.documentElement.scrollToop || document.body.scrollTop;
+        oDiv.style.top = document.documentElement.clientHeight - oDiv.offsetHeight + scrollTop + "px";
+        oDiv.style.left = document.documentElement.clientWidth - oDiv.offsetWidth + "px";
+    }
+ </script>
+</body>
+</html>

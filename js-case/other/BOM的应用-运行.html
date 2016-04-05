@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<textarea id="txt" style="width: 200px;height: 60px;"></textarea><br>
+<input id="btn" type="button" value="运行">
+<a href="####" target="_blank"></a>
+<script>
+    var oBtn = document.getElementById("btn");
+    var oTxt = document.getElementById("txt");
+    oBtn.onclick = function(){
+       var oNewWin =  window.open("about:blank","_blank");
+        oNewWin.document.write("<h1>新信息====<span style='color:yellow'>false</span></h1>");
+    }
+</script>
+</body>
+</html>

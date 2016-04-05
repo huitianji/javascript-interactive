@@ -7,6 +7,29 @@
 <body>
 <script>
 //滚轮事件
+function onMouseWheel(ev){
+    var oEvent=ev || event;
+    // IE  chrom
+    //wheelDelta 上 正
+    //-----------下 负
+    //火狐下  detail  上   负
+    //---------------下   正
+    //alert(oEvent.wheelDelta);//ie下wheelDelta
+    var bDown=true;
+    bDown=oEvent.wheelDelta?oEvent.wheelDelta<0:oEvent.detail>0;
+
+    if(bDown){
+        setLeft(oDiv.offsetTop+10);
+    }else{
+        setLeft(oDiv.offsetTop-10);
+    }
+    if(oEvent.preventDefault){
+        oEvent.preventDefault();//火狐里面的阻止默认行为
+    }
+    return false;
+}
+//myAddEvent(oParent,"mousewheel",onMouseWheel);
+//myAddEvent(oParent,"DOMMouseScroll",onMouseWheel);
 </script>
 </body>
 </html>
