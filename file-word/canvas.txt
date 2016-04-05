@@ -1,0 +1,55 @@
+绘图环境
+
+getContext("2d");//webgl   3G 绘图
+
+fillStyle :填充颜色
+strokeStyle:填充边框线
+lineWidth :边框线宽度
+
+fillRect(l,t,w,h);绘制矩形
+strokeRect(); 带边框线的矩形
+
+边界绘制：
+
+    lineJoin   边界链接点样式
+           --》miter(默认)   round(圆角)  bevel(斜角)
+    lineCap   端点样式------一条直线两个端点
+          --->butt(默认)   round(圆角)    square(高度多出为宽一半的值)
+
+
+
+绘图路径:
+    beginPath :开始绘制路径
+    closePath:结束绘制路径
+    moveTo(l,t)   :移动到绘制的新目标点
+    lineTo   :新目标点
+
+
+
+绘图路径2：
+    stroke :画线，默认黑色
+    fill: 填充默认黑色
+    rect: 矩形区域   //rect(l,t,w,h)
+    clearRect: 删除一个画布的矩形区域  clearRect(x,y,w,h)
+    save: 保存路径
+    restore : 恢复路径
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

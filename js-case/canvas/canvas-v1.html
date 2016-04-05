@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<canvas id="cas" width="400" height="400">
+
+</canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    //绘图环境
+    var oCanvas = oCas.getContext("2d");//webgl : 做3G绘图
+    //fillRect(l,t,w,h)//填充方块
+    //strokeRect()//带边框线的矩形(填充边框线)
+    //oCanvas.strokeRect(50.5,50.5,100,100)
+
+    oCanvas.fillStyle = "green";
+    oCanvas.strokeStyle = "red";
+    oCanvas.lineWidth = 5;
+
+    oCanvas.fillRect(50,50,100,100);
+    oCanvas.strokeRect(50.5,50.5,100,100);
+
+</script>
+</body>
+</html>

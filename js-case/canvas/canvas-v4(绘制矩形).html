@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");
+
+    oCanvas.beginPath();
+
+    oCanvas.rect(100,100,200,100);//rect(l,t,w,h)
+
+    oCanvas.closePath();
+
+    oCanvas.stroke();
+
+    oCanvas.clearRect(0,0,oCas.width,oCas.height);//删除一个画布的矩形区域
+</script>
+</body>
+</html>

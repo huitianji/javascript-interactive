@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<canvas id="cas" width="400" height="400">
+
+</canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    //绘图环境
+    var oCanvas = oCas.getContext("2d");//webgl : 做3G绘图
+
+    oCanvas.beginPath();
+
+    oCanvas.moveTo(100,100);// moveTo(l,t);
+    oCanvas.lineTo(200,200);
+    oCanvas.lineTo(300,200);
+
+    //oCanvas.fillStyle = "green";
+    oCanvas.strokeStyle = "green";
+
+    oCanvas.closePath();
+    oCanvas.stroke();
+
+</script>
+</body>
+</html>
