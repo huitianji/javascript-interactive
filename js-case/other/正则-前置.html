@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<script>
+   // var str = "abcdef";
+    /*
+      search("b");
+      charAt(1);
+    * substring(1,2)//不包含结束位置
+    *
+    * */
+   {
+       //
+       var str = "12 3ab cc04 d56 -- df47";
+       var tmp = "";
+       var arr = [];
+       for(var i = 0,len = str.length;i<len;i++){
+
+            if(str.charAt(i) >= "0" && str.charAt(i) <= "9"){
+                tmp += str.charAt(i);
+                //arr.push(str.charAt(i))
+//                console.log(tmp);
+            }else{
+               // arr.push(str.charAt(i));// ,a,b, ,c,c, ,d, ,-,-, ,d,f
+                if(tmp){
+                    arr.push(tmp);
+                    tmp = "";
+                }
+                //
+            }
+
+       }
+       if(tmp){
+           arr.push(tmp);
+           tmp = "";
+       }
+       //console.log(tmp + "==" + arr);
+        console.log(arr);
+
+    //
+   }
+
+
+
+ </script>
+</body>
+</html>

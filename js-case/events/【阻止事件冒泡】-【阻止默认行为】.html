@@ -6,6 +6,13 @@
 </head>
 <body>
 <script>
+    /*
+    * stop + propagation   // 阻止  + 传播
+    *cancel  + Bubble      // 取消  +  泡沫
+    *
+    *
+    *
+    * */
     //当需要停止冒泡行为时，可以使用
     function stopBubble(e) {
         //如果提供了事件对象，则这是一个非IE浏览器
@@ -32,7 +39,6 @@
     }
     //事件捕获
     /*{
-
      解决ie里面拖动中不选中文字方案
      obj.setCapture()//事件捕获
      obj.releaseCapture();//取消事件捕获

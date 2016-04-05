@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<textarea id="txt1" style="width: 300px; height: 60px;">
+
+    <p>ff</p>
+    <div>mm</div>
+    <p>cc<p>es</p></p>
+</textarea><br>
+<input type="button" id="btn" value="action"><br>
+<textarea id="txt2" style="width: 300px; height: 260px;">
+
+</textarea>
+<script>
+    var txt1 = document.getElementById("txt1");
+    var oBtn = document.getElementById("btn");
+    var txt2 = document.getElementById("txt2");
+
+    oBtn.onclick = function(){
+
+        var re = /<[^<>]+>/g;//除了<>的任意字符
+        txt2.value = txt1.value.replace(re,"");
+
+    }
+
+</script>
+</body>
+</html>

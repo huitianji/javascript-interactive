@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    {
+//        var str = "12 3ab cc04 d56 -- df47";
+//        console.log(str.match(/\d+/g));
+//    }
+    /*
+    * perl风格 --- /a/i
+    *
+    * */
+    /*
+    {     //第一个正则：
+        var re = new RegExp("a","i");//i--》忽略大小写
+        var str = "abacdd";
+        console.log(str.search(re));
+    }
+    */
+//    {
+//        var str = "ab12 3a3 4a4 ffa56";
+//        //var re = /\d+/g;
+//       //console.log(str.match(re))
+//        var re = /a/g;
+//        //console.log(str.replace(re,"--"))
+//    }
+    //
+    /*
+    *元字符   方括号
+    * */
+    var str = "apc bpc  xpc  mpc  dpc";
+    var re = /[ax]pc/g;
+    console.log(str.match(re));
+
+ </script>
+</body>
+</html>
