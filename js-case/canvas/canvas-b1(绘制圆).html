@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl --- > 3D
+    //弧度 = 角度*Math.PI/180;
+    //oCanvas.beginPath();
+
+    oCanvas.moveTo(200,200);
+    oCanvas.arc(200,200,150,0,90*Math.PI/180,false);
+
+    //oCanvas.closePath();
+    oCanvas.stroke();
+
+</script>
+</body>
+</html>

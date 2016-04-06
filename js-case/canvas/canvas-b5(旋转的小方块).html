@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        body{
+            padding: 0px;
+            margin: 0px;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl --- 3D
+
+
+
+    //oCanvas.fillRect(100,100,100,100)
+    //oCanvas.clearRect(0,0,oCas.width,oCas.height);
+    var num = 0;
+
+    oCanvas.translate(100,100);
+
+    function toDraw(){
+        //oCanvas.clearRect(0,0,oCas.width,oCas.height);
+        num++;
+        oCanvas.save();
+        oCanvas.clearRect(-150,-150,oCas.width,oCas.height);
+        oCanvas.fillStyle = "green";
+        oCanvas.rotate(num*Math.PI/180);
+        oCanvas.fillRect(0,0,100,100);
+        oCanvas.restore();
+    }
+
+    setInterval(toDraw,30);
+
+</script>
+</body>
+</html>

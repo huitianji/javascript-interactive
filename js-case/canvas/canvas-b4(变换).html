@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl --  3d
+
+    oCanvas.translate(100,100);//平移
+    oCanvas.rotate(40*Math.PI/180);//以方块坐标的顶点
+    oCanvas.scale(0.5,0.5);//缩放为原来的0.5倍
+    oCanvas.fillRect(0,0,200,100);
+
+</script>
+</body>
+</html>

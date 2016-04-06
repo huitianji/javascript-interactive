@@ -32,6 +32,7 @@ strokeRect(); 带边框线的矩形
     fill: 填充默认黑色
     rect: 矩形区域   //rect(l,t,w,h)
     clearRect: 删除一个画布的矩形区域  clearRect(x,y,w,h) 例： oCanvas.clearRect(0,0,oCas.width,oCas.height)
+              -----oCanvas.clearRect(-150,-150,oCas.width,oCas.height);处理方法
     save: 保存路径
     restore : 恢复路径
 
@@ -41,6 +42,39 @@ strokeRect(); 带边框线的矩形
    oCanvas.fill();// 第一步
    oCanvas.stroke();//第二步
 }
+
+
+--------------------------------
+绘制圆
+arc(x,y,半径，起始弧度，结束弧度，旋转方向);
+    --x,y 起始位置
+    --弧度与角度的关系：弧度=角度*Math.PI/180
+    --旋转方向：顺时针（默认：false）\逆时针（true）
+    --例子：用arc去画个钟表
+
+绘制其他曲线
+arcTo(x1,y1,x2,y2,r);
+    --第一组坐标   第二组坐标  半径
+quadraticCurveTo(dx,dy,x1,y1);
+    --贝塞尔曲线:第一组控制点   \  第二组结束坐标
+bezierCurveTo(dx1,dy1,dx2,dy2,x1,y1);
+    --贝塞尔曲线：第一组控制点  第二组控制点   第三组结束坐标
+
+---------------------------------
+
+变换
+    translate(x,y)
+        --偏移：从起始点为基准点，移动当前坐标位置
+    rotate
+        --旋转：参数为弧度
+        --例子：旋转的小方块
+    scale
+        --缩放例子：旋转加缩放的小方块
+
+
+
+
+
 
 
 
