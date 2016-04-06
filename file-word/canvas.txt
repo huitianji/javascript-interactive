@@ -1,3 +1,4 @@
+canvas 默认是w->300,h->150  ;
 绘图环境
 
 getContext("2d");//webgl   3G 绘图
@@ -30,9 +31,16 @@ strokeRect(); 带边框线的矩形
     stroke :画线，默认黑色
     fill: 填充默认黑色
     rect: 矩形区域   //rect(l,t,w,h)
-    clearRect: 删除一个画布的矩形区域  clearRect(x,y,w,h)
+    clearRect: 删除一个画布的矩形区域  clearRect(x,y,w,h) 例： oCanvas.clearRect(0,0,oCas.width,oCas.height)
     save: 保存路径
     restore : 恢复路径
+
+
+顺序：先背景填充 后 边框线填充
+{
+   oCanvas.fill();// 第一步
+   oCanvas.stroke();//第二步
+}
 
 
 

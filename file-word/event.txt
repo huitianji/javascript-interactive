@@ -1,0 +1,62 @@
+ /*
+    * stop + propagation   // 阻止  + 传播
+    *cancel  + Bubble      // 取消  +  泡沫
+    *
+    *
+    *
+    * */
+    //当需要停止冒泡行为时，可以使用
+    function stopBubble(e) {
+        //如果提供了事件对象，则这是一个非IE浏览器
+        if ( e && e.stopPropagation )
+        //因此它支持W3C的stopPropagation()方法
+            e.stopPropagation();
+        else
+        //否则，我们需要使用IE的方式来取消事件冒泡
+        window.event.cancelBubble = true;
+    }
+    //当需要阻止默认行为时，可以使用
+
+    //阻止浏览器的默认行为
+    function stopDefault(e) {
+        //阻止默认浏览器动作(W3C)
+        if ( e && e.preventDefault ){
+            e.preventDefault();
+            //IE中阻止函数器默认动作的方式
+        }
+        else{
+            window.event.returnValue = false;
+        }
+        return false;
+    }
+    //事件捕获
+    /*{
+     解决ie里面拖动中不选中文字方案
+     obj.setCapture()//事件捕获
+     obj.releaseCapture();//取消事件捕获
+
+     w3c ...
+     return false;
+
+    }
+    {
+     javascript的return false只会阻止默认行为
+
+    }
+
+
+    */
+
+    /*
+    * {
+    * 阻止默认行为
+
+     w3c的方法是e.preventDefault()，IE则是使用e.returnValue = false;
+
+     preventDefault它是事件对象(Event)的一个方法，作用是取消一个目标元素的默认行为。既然是说默认行为，
+     当然是元素必须有默认行为才能被取消，如果元素本身就没有默认行为，调用当然就无效了。
+     什么元素有默认行为呢？如链接<a>，提交按钮<input type=”submit”>等。当Event 对象的 cancelable为false时，
+     表示没有默认行为，这时即使有默认行为，调用preventDefault也是不会起作用的。
+
+    * }
+    * */

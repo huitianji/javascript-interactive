@@ -10,6 +10,26 @@
     var oCas = document.getElementById("cas");
     var oCanvas = oCas.getContext("2d");//webgl -- >画3D
 
+    oCas.onmousedown = function(ev){
+        var ev = ev || window.event;
+        var disX = oCas.offsetLeft;
+        var disY = oCas.offsetTop;
+        oCanvas.moveTo(ev.clientX - disX,ev.clientY - disY);
+        document.onmousemove = function(ev){
+            var ev = ev || window.event;
+            oCanvas.lineTo(ev.clientX - disX,ev.clientY - disY);
+            oCanvas.stroke();
+        }
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+
+//    oCanvas.moveTo(100,100);
+//    oCanvas.lineTo(200,200);
+//    oCanvas.stroke();
+
 </script>
 </body>
 </html>

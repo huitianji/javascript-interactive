@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl --  3D
+    /*
+    {
+        oCanvas.beginPath();
+
+        oCanvas.moveTo(100,100);
+        oCanvas.lineTo(200,200);
+        oCanvas.lineTo(300,200);
+        oCanvas.strokeStyle = "blue";
+        oCanvas.fillStyle = "green";
+        oCanvas.lineWidth = 10;
+
+        oCanvas.lineJoin = "round";
+
+        oCanvas.closePath();
+        oCanvas.fill();
+        oCanvas.stroke();
+
+    }
+    */
+    /*
+    {
+        //oCanvas.beginPath();
+        oCanvas.moveTo(100,100);
+        oCanvas.lineTo(200,200);
+
+        oCanvas.lineWidth = 10;
+        oCanvas.lineCap = "round";
+        //oCanvas.closePath();
+        oCanvas.stroke();
+    }
+    */
+    {
+        oCanvas.beginPath();
+        oCanvas.rect(100.5,100.5,200,100);
+        oCanvas.lineWidth = 10;
+        oCanvas.strokeStyle = "green";
+        oCanvas.fillStyle = "blue";
+        oCanvas.lineJoin = "bevel";//bevel->斜角  round->圆角
+        oCanvas.closePath();
+
+        oCanvas.fill();
+        oCanvas.stroke();
+
+        oCanvas.clearRect(0,0,oCas.width,oCas.height);
+
+    }
+</script>
+</body>
+</html>
