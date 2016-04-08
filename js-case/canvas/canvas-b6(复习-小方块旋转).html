@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css"></style>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl -- 3D
+
+    var num = 0;
+    oCanvas.translate(100,100);
+    function toDraw1(){
+        num++;
+        oCanvas.save();
+        oCanvas.clearRect(-150,-150,oCas.width,oCas.height);
+        oCanvas.rotate(num*Math.PI/180);
+        oCanvas.fillRect(0,0,80,80);
+        oCanvas.restore();
+    }
+    var num2 = 0;
+    var oValue = 1;
+    function toDraw(){
+        num++;
+        oCanvas.clearRect(-150,-150,oCas.width,oCas.height);
+        oCanvas.save();
+
+        if(num2 == 50){
+            oValue = -1;
+        }else if(num2 == 0){
+            oValue = 1;
+        }
+        num2 += oValue;
+        //console.log(num2 + "===" + oValue);
+        oCanvas.scale(num2*1/50,num2*1/50);
+
+        oCanvas.rotate(num*Math.PI/180);
+        oCanvas.translate(-50,-50);
+
+        oCanvas.fillRect(0,0,100,100);
+
+        oCanvas.restore();
+    }
+    setInterval(toDraw,30);
+</script>
+</body>
+</html>

@@ -64,13 +64,27 @@ bezierCurveTo(dx1,dy1,dx2,dy2,x1,y1);
 
 变换
     translate(x,y)
-        --偏移：从起始点为基准点，移动当前坐标位置
+        --偏移：从起始点为基准点，移动当前坐标位置s
     rotate
         --旋转：参数为弧度
         --例子：旋转的小方块
     scale
         --缩放例子：旋转加缩放的小方块
+        --scale(x,y);
 
+----------->>>先旋转再画图形。。1.rotate(弧度)  -》xx.fillRect();
+
+
+插入图片
+    等图片加载完成，再执行canvas操作
+        --图片预加载：在onload中调用方法
+        --drawImage(oImg,x,y,w,h);
+        ---oImg :当前图片  x,y坐标  wh宽高
+        --微博的图片旋转效果
+
+设置背景
+    createPattern(oImg,平铺方式);
+      --2参数: repeat,repeat-x,repeat-y,no-repeat
 
 
 
