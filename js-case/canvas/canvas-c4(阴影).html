@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl --- 3d
+
+    oCanvas.strokeStyle = "green";
+    var str = "文字居中";
+    oCanvas.font = "50px impact";
+    oCanvas.textBaseline = "top";
+
+    oCanvas.shadowOffsetX = 5;
+    oCanvas.shadowOffsetY = 5;
+    oCanvas.shadowBlur = 10;
+    oCanvas.shadowColor = "gray";
+
+    var w = oCanvas.measureText(str).width;
+
+    oCanvas.fillText(str,(oCas.width - w)/2,(oCas.height - 50)/2);
+
+
+    oCanvas.strokeRect(0,0,oCas.width,oCas.height);
+
+</script>
+</body>
+</html>

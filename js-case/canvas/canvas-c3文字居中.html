@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl --- 3D
+
+    var str = "文字居中";
+
+    oCanvas.font = "30px impact";
+    oCanvas.textBaseline = "top";
+
+    var w = oCanvas.measureText(str).width;
+
+    oCanvas.fillText(str,(oCas.width - w)/2,(oCas.height - 30)/2);
+    //console.log(w)
+    oCanvas.strokeRect(0,0,oCas.width,oCas.height);
+</script>
+</body>
+</html>

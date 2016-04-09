@@ -86,7 +86,43 @@ bezierCurveTo(dx1,dy1,dx2,dy2,x1,y1);
     createPattern(oImg,平铺方式);
       --2参数: repeat,repeat-x,repeat-y,no-repeat
 
+渐变
+    createLinearGradient(x1,y1,x2,y2);
+    --线性渐变
+    --第一组参数：起始坐标  第二组参数：结束坐标
+    --addColorStop(位置，颜色)  添加渐变点
+    --------------位置 0---1之间
 
+    createRadialGradient(x1,y1,r1,x2,y2,r2);
+    --放射性渐变
+    --参数：第一个圆的坐标和半径，第二个圆的坐标和半径
+    --从中间往四周渐变
+
+文本
+    strokeText(文字，x,y);
+         --文字边框
+    fillText(文字，x,y);
+         --文字填充
+    font
+         --文字大小：“60px impact”；
+         -------------文字大小  文字样式
+     textAlign
+        --默认是start 跟left一样的效果  end right center
+
+    textBaseline
+        --文字上下的位置方式默认：alphabetic
+
+文本2
+    measureText();
+        --measureText(str).width 只有宽度，没有高度
+
+阴影
+    shadowOffsetX、shadowOffsetY
+        -- X轴偏移   Y轴偏移
+    shadowBlur
+        --高斯模糊值
+    shadowColor
+        --阴影颜色
 
 
 
