@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl --3d
+
+    var yImage = new Image();
+    yImage.onload = function(){
+        draw(this);
+    }
+    yImage.src = "../../../images/f.png";
+    /*
+    //插入图片
+    function draw(obj){
+        oCanvas.drawImage(obj,0,0);
+    }*/
+    //平铺图片
+    function draw(obj){
+        //var bg = oCanvas.createPattern(obj,"repeat-x");
+        var bg = oCanvas.createPattern(obj,"repeat-y");
+        oCanvas.translate(50,50);
+        oCanvas.fillStyle = bg;
+        oCanvas.fillRect(0,0,200,200);
+        oCanvas.strokeRect(0.5,0.5,200,200)
+
+    }
+</script>
+</body>
+</html>

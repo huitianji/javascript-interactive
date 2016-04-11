@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl --3d
+
+    var num = 0;
+    var num2 = 0;
+    var oValue = 1;
+    oCanvas.translate(100,100);
+    function draw(){
+
+        num++;
+        if(num2 == 50){
+            oValue = -1;
+        }else if(num2 == 0){
+            oValue = 1;
+        }
+        num2 += oValue;
+        oCanvas.save();
+        oCanvas.clearRect(-150,-150,oCas.width,oCas.height);
+        oCanvas.scale(num2*1/50,num2*1/50);
+        oCanvas.rotate(num*Math.PI/180);
+        oCanvas.translate(-25,-25);
+        oCanvas.fillRect(0,0,50,50);
+
+
+        oCanvas.restore();
+    }
+    setInterval(draw,30);
+</script>
+</body>
+</html>
