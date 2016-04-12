@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+        ul{
+            float: left;
+            font-size: 20px;;
+        }
+        li{
+            height: 50px;
+            line-height:50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<ul>
+    <li>点</li>
+    <li>击</li>
+    <li>显</li>
+    <li>示</li>
+</ul>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl -- 3d
+
+    var aLi = document.getElementsByTagName("li");
+    for(var i = 0,len = aLi.length;i<len;i++){
+        aLi[i].onclick = function(){
+            var str = this.innerHTML;
+            var h = 160;
+            oCanvas.clearRect(0,0,oCas.width,oCas.height);
+            oCanvas.font = h + "px impact";
+            oCanvas.textBaseline = "top";
+            var w = oCanvas.measureText(str).width;
+
+            oCanvas.fillText(str,(oCas.width - w)/2,(oCas.height - h)/2);
+            //取得图形的数据--记录下区域的像素
+            var oImg = oCanvas.getImageData((oCas.width - w)/2,(oCas.height - h)/2,w,h);
+            //清空画布
+            oCanvas.clearRect(0,0,oCas.width,oCas.height);
+            //从一组数中，随机出来一部分
+            var arr = randomArr(w*h,w*h/10);
+            var newImg = oCanvas.createImageData(w,h);
+
+            for(var i = 0,len = arr.length;i<len;i++){
+                newImg.data[4*arr[i]] = oImg.data[4*arr[i]];
+                newImg.data[4*arr[i] + 1] = oImg.data[4*arr[i] + 1];
+                newImg.data[4*arr[i] + 2] = oImg.data[4*arr[i] + 2];
+                newImg.data[4*arr[i] + 3] = oImg.data[4*arr[i] + 3];
+            }
+
+            oCanvas.putImageData(newImg,(oCas.width - w)/2,(oCas.height - h)/2);
+
+
+            //参考线
+            oCanvas.strokeRect(0,0,oCas.width,oCas.height);
+        }
+    }
+    function randomArr(iAll,iNow){//iAll:整体，iNow：取出的个数
+        var arr = [];
+        var newArr = [];
+        for(var i = 0;i<iAll;i++){
+            arr.push(i);
+        }
+        for(var i = 0;i<iNow;i++){
+            newArr.push(arr.splice(Math.floor(Math.random()*arr.length),1));
+        }
+        return newArr;
+    }
+
+    //参考线
+    oCanvas.strokeRect(0,0,oCas.width,oCas.height);
+</script>
+</body>
+</html>

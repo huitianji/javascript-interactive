@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl == 3d
+
+    var yImg = new Image();
+    yImg.onload = function(){
+        draw(this);
+    }
+    yImg.src = "../../../images/m.jpg";
+
+    function draw(obj){
+        oCas.width = obj.width;
+        oCas.height = obj.height*2;//2倍
+
+        oCanvas.drawImage(obj,0,0);
+        //获取像素
+        var oImg = oCanvas.getImageData(0,0,obj.width,obj.height);
+        var w = oImg.width;
+        var h = oImg.height;
+        var newImg = oCanvas.createImageData(obj.width,obj.height);
+
+        var stepW = w/10;
+        var stepH = h/10;
+        for(var i = 0;i<stepH;i++){
+            for(var j = 0;j<stepW;j++){
+
+                var color = getXY(oImg,j*10 + Math.floor(Math.random()*10),i*10 + Math.floor(Math.random()*10));
+                for(var k = 0;k<10;k++){
+                    for(var l = 0;l<10;l++){
+                        setXY(newImg,j*10 + l,i*10 + k,color);
+                    }
+                }
+
+
+            }
+        }
+
+        oCanvas.putImageData(newImg,0,obj.height);
+    }
+
+
+    //1
+    function getXY(obj,x,y){
+        var w = obj.width;
+        var h = obj.height;
+        var d = obj.data;
+
+        var color = [];
+
+        color[0] = d[4*(y*w + x)];
+        color[1] = d[4*(y*w + x) + 1];
+        color[2] = d[4*(y*w + x) + 2];
+        color[3] = d[4*(y*w + x) + 3];
+
+        return color;
+    }
+    //2
+    function setXY(obj,x,y,color){
+        var w = obj.width;
+        var h = obj.height;
+        var d = obj.data;
+
+        d[4*(y*w + x)] = color[0];
+        d[4*(y*w + x) + 1] = color[1];
+        d[4*(y*w + x) + 2] = color[2];
+        d[4*(y*w + x) + 3] = color[3];
+
+    }
+</script>
+</body>
+</html>
