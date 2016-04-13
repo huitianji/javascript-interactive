@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl --- 3d
+    //x,y,r
+    var c1 = new Shape(100,100,50);
+    var c2 = new Shape(200,200,50);
+
+    oCas.onmousedown = function(ev){
+        var ev = ev || window.event;
+        var point ={
+            x:ev.clientX - oCas.offsetLeft,
+            y:ev.clientY - oCas.offsetTop
+        };
+        c1.reDraw(point);
+        c2.reDraw(point);
+    }
+    c1.onclick = function(){
+        alert(1);
+    }
+    c2.onclick = function(){
+        alert(2);
+    }
+    function Shape(x,y,r){
+        this.x = x;
+        this.y = y;
+        this.r = r;
+
+        oCanvas.beginPath();
+        oCanvas.arc(this.x,this.y,this.r,0,360*Math.PI/180,false);
+        oCanvas.closePath();
+        oCanvas.fill();
+    }
+    Shape.prototype.reDraw = function(point){
+
+        oCanvas.beginPath();
+        oCanvas.arc(this.x,this.y,this.r,0,360*Math.PI/180,false);
+        oCanvas.closePath();
+        oCanvas.fill();
+
+        if(oCanvas.isPointInPath(point.x,point.y)){
+            this.onclick();
+        }
+
+    }
+
+    //参考线
+    oCanvas.strokeRect(0,0,oCas.width,oCas.height);
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl --- 3d
+
+    oCanvas.beginPath();
+    oCanvas.arc(100,100,50,0,360*Math.PI/180);
+    oCanvas.closePath();
+    oCanvas.fill();
+
+    oCas.onmousedown = function(ev){
+        var ev = ev || window.event;
+        var x = ev.clientX - oCas.offsetLeft;
+        var y = ev.clientY - oCas.offsetTop;
+        if(oCanvas.isPointInPath(x,y)){//isPointInPath  : 是否在可点击的范围之内
+            console.log("ok");
+        }
+    }
+
+    //参考线
+    oCanvas.strokeRect(0,0,oCas.width,oCas.height);
+</script>
+</body>
+</html>

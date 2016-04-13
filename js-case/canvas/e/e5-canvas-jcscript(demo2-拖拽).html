@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="../../../js-canvas/jCanvaScript.1.5.18.min.js"></script>
+</head>
+<body>
+<canvas id="cas" width="400" height="400"></canvas>
+<script>
+    var oCas = document.getElementById("cas");
+    var oCanvas = oCas.getContext("2d");//webgl -- 3d
+
+    jc.start("cas",true);//start(one,two)===>第二个参数代表的是重绘制的意思
+   // jc.rect(0,0,100,100,"#ff0000",1);
+    jc.circle(100,100,50,"#ff0000",1).draggable();
+    jc.start("cas");
+</script>
+</body>
+</html>

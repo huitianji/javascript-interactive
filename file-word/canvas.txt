@@ -147,6 +147,33 @@ bezierCurveTo(dx1,dy1,dx2,dy2,x1,y1);
         --马赛克效果
 
 
+-------------------------------------------------------
+合成
+    全局阿尔法值
+        --globalAlpha
+    覆盖合成
+        --源，新的图形
+        --目标，已经绘制过的图形
+        --globalCompositeOperation 属性
+        >> source-over  destination-over  source-atop
+        >> destination-atop source-in destination-in
+        >> source-out destination-out  lighter
+        >> copy xor
+
+将画布导出为图像
+    toDataURL
+        --火狐右键可以直接导出成图片
+事件操作
+    isPointInPath(x,y)
+        --是否在点击范围之内
+        --iCanvaScript(canvas中的jquery)
+        --http://jcscript.com/
+
+
+
+
+
+
 
 
 
