@@ -1,0 +1,39 @@
+///
+///750   基宽度  可以是1000
+// a为基准单位,由设计稿宽度除以100所得.r为rem的实际像素值.
+@a: (750/100);
+@r: (@a * 10);
+
+/*
+*320   480
+*
+xs  - 480
+ sm  - 768
+ md  - 992
+ lg  - 1200
+
+*/
+@media only screen and (min-width: 400px) and (max-width: 1024px){
+    .x{
+
+    }
+}
+@media only screen and (min-width: 1024px){
+    .content{
+        width: 1000px;
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 320px){
+    .content{
+        width: 1000px;
+        margin: auto;
+    }
+}
+.op{
+    width:100/@r*1rem;
+}
+.footer{
+     line-height: (56/$r)*1rem;
+    padding-top:(100/@r)*1rem;
+}
