@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style type="text/css">
+
+        /*
+
+        wmode="transparent"
+
+        */
+
+        body,div,table,td,th{
+            margin: 0px;
+            padding: 0px;
+        }
+        .lt{
+            float: left;
+        }
+        .rt{
+            float: right;
+        }
+        body{
+            width: 900px;
+            min-height: 500px;
+            margin: 50px auto;
+            border: 1px solid darkslategray;
+
+        }
+        .width-column{
+            width: 350px;
+        }
+        .margin-left{
+            margin-left: 30px;
+        }
+        .title{
+            height: 30px;
+            line-height: 30px;
+            padding: 0px 15px;
+            color:#fff;
+            text-align: center;
+            background-color: blue;
+        }
+        table{
+            width: 100%;
+            /*
+                css实现table中的cellpadding, cellspacing
+                border-collapse:collapse;
+                border-spacing:0;
+            */
+            border-collapse:collapse;
+            border-spacing:0;
+
+            border-top:1px solid gray;
+            border-left:1px solid gray;
+        }
+        td,th{
+            height: 35px;
+            line-height: 35px;
+
+            text-align: center;
+            border-bottom:1px solid gray;
+            border-right:1px solid gray;
+        }
+        td{
+            color:#ccc;
+        }
+        .red{
+            color:red;
+        }
+        .blue{
+            color:blue;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div>
+    <input type="text">
+    <input type="text">
+    <input type="button" id="btn" value="提交">
+</div>
+<div id="div1">
+    <div id="nowtime" class="width-column lt">
+
+    </div>
+    <div id="nexttime" class="width-column margin-left lt">
+
+    </div>
+</div>
+<div>
+<!--<div id="div1">-->
+    <!--<div id="nowtime" class="width-column lt">-->
+        <!--<div class="title">-->
+            <!--<div class="lt"><span>3</span>月</div>-->
+            <!--<div class="oppx">-->
+                <!--<span>2000</span>-->
+                <!--年-->
+                <!--<span>3</span>-->
+                <!--月-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<table width="100%" border="0" cellpadding="0" cellspacing="0">-->
+            <!--<thead>-->
+                <!--<tr>-->
+                    <!--<th>周一</th>-->
+                    <!--<th>周二</th>-->
+                    <!--<th>周三</th>-->
+                    <!--<th>周四</th>-->
+
+                    <!--<th>周五</th>-->
+                    <!--<th class="red">周六</th>-->
+                    <!--<th class="red">周日</th>-->
+                <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+                <!--<tr>-->
+                    <!--<td>1</td>-->
+                    <!--<td>2</td>-->
+                    <!--<td>3</td>-->
+                    <!--<td>4</td>-->
+
+                    <!--<td>5</td>-->
+                    <!--<td>6</td>-->
+                    <!--<td>7</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>1</td>-->
+                    <!--<td>2</td>-->
+                    <!--<td>3</td>-->
+                    <!--<td>4</td>-->
+
+                    <!--<td>5</td>-->
+                    <!--<td>6</td>-->
+                    <!--<td>7</td>-->
+                <!--</tr>-->
+
+            <!--</tbody>-->
+        <!--</table>-->
+    <!--</div>-->
+    <!--<div id="nexttime" class="width-column margin-left lt">-->
+        <!--<div class="title">-->
+            <!--<div class="rt"><span>3</span>月</div>-->
+            <!--<div class="">-->
+                <!--<span>2000</span>-->
+                <!--年-->
+                <!--<span>3</span>-->
+                <!--月-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<table width="100%" border="0" cellpadding="0" cellspacing="0">-->
+            <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>周一</th>-->
+                <!--<th>周二</th>-->
+                <!--<th>周三</th>-->
+                <!--<th>周四</th>-->
+
+                <!--<th>周五</th>-->
+                <!--<th class="red">周六</th>-->
+                <!--<th class="red">周日</th>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+            <!--<tr>-->
+                <!--<td>1</td>-->
+                <!--<td>2</td>-->
+                <!--<td>3</td>-->
+                <!--<td>4</td>-->
+
+                <!--<td>5</td>-->
+                <!--<td>6</td>-->
+                <!--<td>7</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>1</td>-->
+                <!--<td>2</td>-->
+                <!--<td>3</td>-->
+                <!--<td>4</td>-->
+
+                <!--<td>5</td>-->
+                <!--<td>6</td>-->
+                <!--<td>7</td>-->
+            <!--</tr>-->
+
+            <!--</tbody>-->
+        <!--</table>-->
+    <!--</div>-->
+<!--</div>-->
+</div>
+<script>
+    var aInput = document.getElementsByTagName("input");
+    var oDiv = document.getElementById("div1");
+
+    var oNowTime = document.getElementById("nowtime");
+    var oNextTime = document.getElementById("nexttime");
+
+    var aTd = document.getElementsByTagName("td");
+    var aNowSpan = oNowTime.getElementsByTagName("span") ;
+    var aNextSpan = oNextTime.getElementsByTagName("span");
+    console.log(aNowSpan);
+    var bBtn = true;
+    aInput[2].onclick = function(){
+        var oDate = new Date();
+
+        if(bBtn){
+            oDiv.style.display = "block";
+            if((oDate.getMonth() + 1) == 12){
+                showDate(oNowTime,oDate.getFullYear(),(oDate.getMonth()+1),true);
+                showDate(oNextTime,oDate.getFullYear() + 1,1);
+            }else{
+                showDate(oNowTime,oDate.getFullYear(),(oDate.getMonth()+1),true);
+                showDate(oNextTime,oDate.getFullYear(),(oDate.getMonth() + 2));
+            }
+
+            showColor(oDate.getDate());
+            showBtn();
+        }else{
+            oDiv.style.display = "none";
+        }
+        bBtn = !bBtn;//每次换开关的真假
+    }
+    function showDate(obj,year,month,bBtn){
+        var oDate = new Date();
+        var dayNum = 0 ;//一共有多少天
+
+        if(!obj.bBtn){
+            obj.oTitle = document.createElement("div");
+            obj.oTitle.className = "title";
+            obj.appendChild(obj.oTitle);
+
+            var oTable = document.createElement("table");
+            var oThead = document.createElement("thead");
+            var oTr = document.createElement("tr");
+            var arr = ["周一","周二","周三","周四","周五","周六","周日"];
+            for(var i = 0;i<7;i++){
+                var oTh = document.createElement("th");
+                oTh.innerHTML = arr[i];
+                if(i == 5 || i == 6){
+                    oTh.className = "red";
+                }
+                oTr.appendChild(oTh);
+            }
+            oThead.appendChild(oTr);
+            oTable.appendChild(oThead);
+
+
+            //2
+            var oTbody = document.createElement("tbody");
+            for(var i = 0;i<6;i++){//行数
+                var oTr = document.createElement("tr");
+                for(var j = 0;j<7;j++){
+                    var oTd = document.createElement("td");
+                    oTr.appendChild(oTd);
+                }
+                oTbody.appendChild(oTr);
+            }
+            oTable.appendChild(oTbody);
+            //3
+            obj.appendChild(oTable);
+            //
+
+            obj.bBtn = true;
+        }
+       obj.oTitle.innerHTML =( bBtn ?  '<div class="lt">' +
+               '<span>'+ (month - 1) +'</span>' +
+               '月</div>': '<div class="rt">' +
+        '<span>'+ (month + 1) +'</span>' +
+        '月</div>') +
+                '<div class="oppx">' +
+               '<span>'+year+'</span>' +
+               '年' +
+               '<span>'+month+'</span>' +
+               '月</div>';
+       //  02-op
+        //每次打开数据清空
+        var aTd = obj.getElementsByTagName("td");
+        for(var i = 0;i<aTd.length;i++){
+            aTd[i].innerHTML = "";
+        }
+        //
+        if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+            dayNum = 31;
+        }else if(month == 4 ||  month == 6 || month == 9 || month == 11){
+            dayNum = 30;
+        }else if(month == 2 && isleapYear(year)){
+            dayNum = 29;
+        }else{
+            dayNum = 28;
+        }
+
+        //
+        oDate.setFullYear(year);
+        oDate.setMonth(month - 1);
+        oDate.setDate(1);
+        switch (oDate.getDay()){//[getDay周一 ----- 日]  [ getDate /日]
+            case 0:
+                for(var i = 0;i<dayNum;i++){
+                    aTd[i+6].innerHTML = i + 1;
+                }
+                break;
+            case 1:
+                for(var i = 0;i<dayNum;i++){
+                    aTd[i].innerHTML = i + 1;
+                }
+                break;
+            case 2:
+                for(var i = 0;i<dayNum;i++){
+                    aTd[i+1].innerHTML = i + 1;
+                }
+                break;
+            case 3:
+                for(var i = 0;i<dayNum;i++){
+                    aTd[i+2].innerHTML = i + 1;
+                }
+                break;
+            case 4:
+                for(var i = 0;i<dayNum;i++){
+                    aTd[i+3].innerHTML = i + 1;
+                }
+                break;
+            case 5:
+                for(var i = 0;i<dayNum;i++){
+                    aTd[i+4].innerHTML = i + 1;
+                }
+                break;
+            case 6:
+                for(var i = 0;i<dayNum;i++){
+                    aTd[i+5].innerHTML = i + 1;
+                }
+                break;
+
+        }
+
+        //左右月份
+        if(month == 1 && bBtn){
+            obj.oTitle.getElementsByTagName("span")[0].innerHTML = 12;
+        }else if(month == 12 && !bBtn){
+            obj.oTitle.getElementsByTagName("span")[0].innerHTML = 1;
+        }
+    }
+    //end
+    function isleapYear(year){
+        if(year%4 == 0 && year%100 != 0){
+            return true;
+        }else{
+            if(year%400 == 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
+    //showColor
+    function showColor(date){
+        var result = [];
+        var oDate = new Date();
+        var re = new RegExp(""+date+"(<p>)*");//<p>有可能有或者有可能没有
+
+        var bBtn = true;//开关
+        var index = 0;
+
+        for(var i = 0,len = aTd.length;i<len;i++){
+            if(aTd[i].innerHTML != ""){
+                result.push(aTd[i]);
+            }
+        }
+        if(aNowSpan[1].innerHTML == oDate.getFullYear() && aNowSpan[2].innerHTML == (oDate.getMonth() + 1)){
+            for(var i = 0,len = result.length;i<len;i++){
+                if(re.test(result[i].innerHTML) && bBtn){
+                    result[i].className = "red";
+                    index = i;
+                    bBtn = false;
+                }
+            }
+            for(len = index + 11;index + 1 < len;index++){
+                result[index+1].className = "blue";
+            }
+        }else{
+            for(var i = 0,len = result.length;i<len;i++){
+                result[i].className = "";
+            }
+        }
+    }
+    //
+    function showBtn(){
+        var leftMonth = parseInt(aNowSpan[0].innerHTML);
+        var leftYear = parseInt(aNowSpan[1].innerHTML);
+
+        var rightMonth = parseInt(aNextSpan[0].innerHTML);
+        var rightYear = parseInt(aNextSpan[1].innerHTML);
+
+        aNowSpan[0].parentNode.onclick = function(){
+            if(leftMonth == 12){
+                showDate(oNowTime,leftYear - 1,leftMonth,true);
+                showDate(oNextTime,leftYear,1);
+            }else{
+                showDate(oNowTime,leftYear,leftMonth,true);
+                showDate(oNextTime,leftYear,leftMonth + 1);
+            }
+            showBtn();
+            showColor(new Date().getDate());
+        }
+        aNextSpan[0].parentNode.onclick = function(){
+            if(rightMonth == 1){
+                showDate(oNowTime,rightYear,12,true);
+                showDate(oNextTime,rightYear + 1,rightMonth);
+            }else{
+                showDate(oNowTime,rightYear,rightMonth - 1,true);
+                showDate(oNextTime,rightYear,rightMonth);
+            }
+            showBtn();
+            showColor(new Date().getDate());
+        }
+    }
+</script>
+</body>
+</html>

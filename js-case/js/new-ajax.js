@@ -1,10 +1,13 @@
 function ajax(url,oRequest,fnSucc,fnFail){
     //1.创建ajax对象
     var oAjax = null;
-    if(window.XMLHttpReques){
-        oAjax = new XMLHttpReques();
+    if(window.XMLHttpRequest){//Window.XMLHttpRequest
+        oAjax = new XMLHttpRequest();
+                //new XMLHttpRequest()
+
     }else{
-        oAjax = new ActiveXObject("Microsoft.XMLHTTP");
+        oAjax = new ActiveXObject("Microsoft.XMLHTTP");//ie
+                //new ActiveXObject("Microsoft.XMLHTTP");
     }
     //2.链接服务器
     oAjax.open(oRequest,url,true);

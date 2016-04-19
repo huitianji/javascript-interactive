@@ -1,0 +1,10 @@
+if (window.XMLHttpRequest) { //Mozilla, Safari,IE7,IE8
+alert('Mozilla, Safari,IE7,IE8 ');
+if(!window.ActiveXObject){ // Mozilla, Safari,
+alert('Mozilla, Safari');
+} else {
+alert('IE7,IE8');
+}
+} else {
+alert('IE6');
+}
