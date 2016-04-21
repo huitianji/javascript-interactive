@@ -1,0 +1,127 @@
+//对象表示
+var box = {
+    name:"name",
+    age:100
+}
+alert(box.name)//  =>name
+//json对象表示
+1>必须是双引号，单引号不行
+2>说白了就是字符串,所以任何的表示，都应该加上引号表示字符串
+这样写会报错：
+{
+    "name":"name1",
+    "age":10
+}
+正确的写法：
+'{ "name":"name1", "age":10}'
+
+【普通数组】
+var arr = [100,"lee",true];
+【json数组】
+[100,"lee",true]
+
+##json对象和数组比普通对象和数组，少了分号，少了变量赋值，而且本身应该是字符串表示
+
+-------------------------------
+【最常用的json结构】
+
+[
+    {
+        "title":"title1",
+        "name":10
+    },
+    {
+
+    },
+    {
+    }
+]
+
+---------------------------------
+【模拟加载json数据字符串的过程】
+var json = load("demo.json");
+--把json字符串加载进来,并且赋值给json变量
+var json = '[{"name":"na1","num":1},{"name":"na2","num":2}]';//模拟加载json字符串的过程
+-------------------------------------------------------------
+【解析和序列化】
+//使用eval()来执行字符串里的js代码
+var box = eval(json);//解析json字符串，让它变成javascript代码
+//ps:eval()不安全
+
+---------------------------------------------------------
+【字符串 ---》object】
+json2.js  //兼容ie8之下的版本
+var box = JSON.parse(json);
+
+__________________________________________-
+【object -->jsion字符串】
+var box = [
+    {
+        name:'n1',
+        num;1
+    },
+    {
+        'name':'n1',
+        num;1
+    }
+]
+
+var json = JSON.stringify(box);
+alert(json);---》转换成json字符串
+----------------------------------------------
+JSON.stringify(s1,s2.s3)//第三个参数可以缩进
+JSON.stringify（s1,s2,4)//缩进4个
+JSON.stringify(s1,null,4);
+----------------------------------------------
+var box = [
+    {
+        name:"na",
+        num:10,
+        height:30,
+        toJSON:function(){
+            return this.name;
+        }
+    },
+    {
+        name:"na1",
+        num:102,
+        height:174,
+        toJSON:function(){
+            return this.name;
+        }
+    }
+];
+//仅仅返回name
+
+________-----------------------------------------
+var json = '[{"name":"na1","num":1},{"name":"na2","num":2}]';//模拟加载json字符串的过程
+var box = JSON.parse(json,function(key,value){
+    if(key == "name"){
+        return "Mr"+value;
+    }else{
+        return value;
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

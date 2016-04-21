@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    var json = '[{"name":"na1","num":1},{"name":"na2","num":2}]';
+//    alert(json)
+//转换成json
+var box = [
+    {
+        name:"na",
+        num:10,
+        height:30,
+        toJSON:function(){
+            return this.name;
+        }
+    },
+    {
+        name:"na1",
+        num:102,
+        height:174,
+        toJSON:function(){
+            return this.name;
+        }
+    }
+];
+//
+//var json = JSON.stringify(box);
+    //console.log(json);//[{"name":"na","num":10,"height":30},{"name":"na1","num":102,"height":174}]
+//------------------------------------------------------
+//var json = JSON.stringify(box,["num","height"]);
+    //console.log(json);//[{"num":10,"height":30},{"num":102,"height":174}]
+//--------------------------------------------------------
+//var json = JSON.stringify(box,function(key,value){
+//    if(key == "name"){
+//        return "Mr"+value;
+//    }else{
+//        return value;
+//    }
+//});
+//ff浏览器 3.5和3.6有个bug
+    //现在火狐的版本是16.0，所以3.5和3.6可以忽略不计，没必要单独兼容
+
+    //--------------------------------------------------
+var json = JSON.stringify(box,null,4);
+console.log(json);
+</script>
+</body>
+</html>
