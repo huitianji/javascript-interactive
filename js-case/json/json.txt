@@ -69,6 +69,7 @@ var box = [
 var json = JSON.stringify(box);
 alert(json);---》转换成json字符串
 ----------------------------------------------
+//第二个参数【"name"】
 JSON.stringify(s1,s2.s3)//第三个参数可以缩进
 JSON.stringify（s1,s2,4)//缩进4个
 JSON.stringify(s1,null,4);
