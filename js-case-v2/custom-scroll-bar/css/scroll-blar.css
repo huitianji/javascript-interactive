@@ -1,0 +1,90 @@
+body {
+  width: 1200px;
+  margin: 0px auto;
+  font-size: 14px;
+}
+div,
+a {
+  padding: 0px;
+  margin: 0px;
+}
+.csbar-action {
+  height: 40px;
+  line-height: 40px;
+  padding-top: 20px;
+}
+.csbar-action > a {
+  float: right;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  text-align: center;
+  background-color: #efefef;
+}
+.csbar-spreads {
+  position: relative;
+  border: 1px solid #b7d7f3;
+}
+.csbar-spreads .listbox {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+.csbar-spreads .listbox > div {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1198px;
+}
+.csbar-spreads .listbox .row {
+  height: 39px;
+  border-bottom: 1px solid #ececec;
+}
+.csbar-spreads .listbox .row > span {
+  display: block;
+  float: left;
+  width: 100%;
+  line-height: 39px;
+  text-align: center;
+}
+.csbar-spreads .cs-bar {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 15px;
+  height: 200px;
+  background-color: red;
+}
+.csbar-spreads .cs-bar > span {
+  display: block;
+}
+.csbar-spreads .atn {
+  height: 10px;
+  padding: 5px 0px 0px 4px;
+  background-color: green;
+}
+.csbar-spreads .atn > span {
+  display: block;
+  width: 7px;
+  height: 4px;
+}
+.csbar-spreads .speeds {
+  position: relative;
+  height: 170px;
+  margin: 0px 3px;
+}
+.csbar-spreads .speeds > span {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: block;
+  width: 9px;
+  background-color: #b7d7f3;
+}
+.csbar-spreads .up > span {
+  background: url("../images/up.png") no-repeat left top;
+}
+.csbar-spreads .down > span {
+  background: url("../images/down.png") no-repeat left top;
+}

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>scroll-bar</title>
+    <script src="../../jquery1.10.2.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/scroll-blar.css">
+</head>
+<body>
+<div class="csbar-action">
+    <a href="####">按钮</a>
+</div>
+<div class="csbar-spreads" data-type="cssbar-oparent">
+    <div class="listbox" data-type="content-queue">
+        <div >
+            <!--row-1-->
+            <div class="row">
+                <span>3.00-1</span>
+            </div>
+            <!--row-2-->
+            <div class="row">
+                <span>转让-2</span>
+            </div>
+            <!--row-3-->
+            <div class="row">
+                <span>2016-06-20-3</span>
+            </div>
+            <!--row-4-->
+            <div class="row">
+                <span>2016-06-20-v4</span>
+            </div>
+            <!--row-5-->
+            <div class="row">
+                <span>2016-06-20-v5</span>
+            </div>
+            <!--row-6-->
+            <div class="row">
+                <span>转让-v6</span>
+            </div>
+            <div class="row">
+                <span>转让-v7</span>
+            </div>
+            <div class="row">
+                <span>转让-v8</span>
+            </div>
+            <div class="row">
+                <span>转让-v9</span>
+            </div>
+            <div class="row">
+                <span>转让-v10</span>
+            </div>
+            <div class="row">
+                <span>转让-v11</span>
+            </div>
+            <div class="row">
+                <span>转让-v12</span>
+            </div>
+        </div>
+    </div>
+    <!--scroll-bar-->
+    <div class="cs-bar">
+        <span class="atn up">
+            <span></span>
+        </span>
+        <span class="speeds" data-type="scrollbar">
+            <span style="height: 0%"></span>
+        </span>
+        <span class="atn down">
+            <span></span>
+        </span>
+    </div>
+    <!--end-->
+</div>
+<div class="csbar-spreads" data-type="cssbar-oparent">
+    <div class="listbox" data-type="content-queue">
+        <div >
+            <!--row-1-->
+            <div class="row">
+                <span>3.00-1</span>
+            </div>
+            <!--row-2-->
+            <div class="row">
+                <span>转让-2</span>
+            </div>
+            <!--row-3-->
+            <div class="row">
+                <span>2016-06-20-3</span>
+            </div>
+            <!--row-4-->
+            <div class="row">
+                <span>2016-06-20-v4</span>
+            </div>
+            <!--row-5-->
+            <div class="row">
+                <span>2016-06-20-v5</span>
+            </div>
+            <!--row-6-->
+            <div class="row">
+                <span>转让-v6</span>
+            </div>
+        </div>
+    </div>
+    <!--scroll-bar-->
+    <div class="cs-bar">
+        <span class="atn up">
+            <span></span>
+        </span>
+        <span class="speeds" data-type="scrollbar">
+            <span style="height: 0%;top:0px;"></span>
+        </span>
+        <span class="atn down">
+            <span></span>
+        </span>
+    </div>
+    <!--end-->
+</div>
+<script>
+    var oScrollBar = $("[data-type='scrollbar']");
+    var oProgress = oScrollBar.children("span").get(0);
+    //
+    oScrollBar.children("span").each(function(i){
+        var _this = this;
+        this.onmousedown  = function(ev){
+            var oEvent = ev || window.event;
+            onMouseDown(oEvent,_this);
+        };
+        //滚动条比例=内容盒子高度/内容高度
+        var oContentBox = $("[data-type='content-queue']").eq(i);
+        var oContent = oContentBox.children("div");
+        oScrollBar.children("span").eq(i).get(0).style.height = (oContentBox.get(0).offsetHeight/oContent.get(0).offsetHeight)*100 + "%";
+
+    });
+    function onMouseDown(ev,_this){//_this ->滚动条=oProgress
+        var oEvent = ev || window.event;
+        var dixY = oEvent.clientY - _this.offsetTop;
+        document.onmousemove = function(ev){
+            var oEvent = ev || window.event;
+            var T = oEvent.clientY - dixY;
+            //
+            setTop(T,_this);
+        }
+        document.onmouseup = function(ev){
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+        return false;
+    }
+
+    //setTop
+    function setTop(T,_this){
+        //
+        var oScrollBarP = $(_this).parent();//滚动条盒子 = oScrollBar
+
+        if(T < 0){
+            T = 0;
+        }else if(T > oScrollBarP.get(0).offsetHeight - _this.offsetHeight){
+            T = oScrollBarP.get(0).offsetHeight - _this.offsetHeight;
+        }
+        _this.style.top = T + "px";
+        //比例换算
+        var scale = T / (oScrollBarP.get(0).offsetHeight - _this.offsetHeight);
+        var oTargetDiv = $(_this).parents("[data-type='cssbar-oparent']").find("[data-type='content-queue']");
+        var oTargetContent = $(_this).parents("[data-type='cssbar-oparent']").find("[data-type='content-queue']>div");
+        oTargetContent.get(0).style.top = -(oTargetContent.get(0).offsetHeight - oTargetDiv.get(0).offsetHeight)*scale + "px";
+    }
+    //封装一个通用函数事件
+    function myAddEvent(obj,sEvent,fn){
+        if(obj.attachEvent){
+            obj.attachEvent("on"+sEvent,fn);
+        }else{
+            obj.addEventListener(sEvent,fn,false);
+        }
+    }
+    //滚轮事件
+    function onMouseWheel(ev){
+        var oEvent = ev || window.event;
+        // IE  chrom
+        //wheelDelta 上 正
+        //-----------下 负
+        //火狐下  detail  上   负
+        //---------------下   正
+        //alert(oEvent.wheelDelta);//ie下wheelDelta
+        //alert(oEvent.wheelDelta)
+        var bDown=true;
+        bDown = oEvent.wheelDelta ? oEvent.wheelDelta<0:oEvent.detail>0;
+        if(bDown){
+            //setTop(T,_this)
+        }
+
+    }
+    myAddEvent(document,"mousewheel",onMouseWheel);
+    myAddEvent(document,"DOMMouseScroll",onMouseWheel);
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    var onMouseDowns = function(ev,_this){
+        var oEvent = ev || window.event;
+        var dixY = oEvent.clientY - oProgress.offsetTop;
+        var _this = _this;
+        console.log(_this);
+        document.onmousemove = function(ev){
+            var oEvent = ev || window.event;
+            var T = oEvent.clientY - dixY;
+
+            if(T < 0){
+                T = 0;
+            }else if(T > oScrollBar.get(0).offsetHeight - oProgress.offsetHeight){
+                T = oScrollBar.get(0).offsetHeight - oProgress.offsetHeight;
+            }
+            oProgress.style.top = T + "px";
+            //比例换算
+            var scale = T / (oScrollBar.get(0).offsetHeight - oProgress.offsetHeight);
+            var oTargetDiv = $(_this).parents("[data-type='cssbar-oparent']").find("[data-type='content-queue']");
+            var oTargetContent = $(_this).parents("[data-type='cssbar-oparent']").find("[data-type='content-queue']>div")
+            oTargetContent.get(0).style.top = -(oTargetContent.get(0).offsetHeight - oTargetDiv.get(0).offsetHeight)*scale + "px";
+        }
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+        return false;
+    }
+    //console.log(oProgress)
+    //比例换算-v2
+//    var oContentBox = $("[data-type='content-queue']");
+//    var oContent = oContentBox.children("div");
+//    oProgress.style.height = (oContentBox.get(0).offsetHeight/oContent.get(0).offsetHeight)*100 + "%";
+
+    }
+</script>
+</body>
+</html>
