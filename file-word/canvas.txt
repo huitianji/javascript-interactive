@@ -172,7 +172,9 @@ bezierCurveTo(dx1,dy1,dx2,dy2,x1,y1);
 
 
 
+////////////////////
 
+http://jcscript.com/documentation/
 
 
 
