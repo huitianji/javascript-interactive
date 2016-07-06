@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	#div{ width:100px; height:100px; background-color:red;}
+</style>
+</head>
+
+<body>
+<div id="div">
+</div>
+<script>
+	var oDiv=document.getElementById("div");
+	function down(ev){
+		var oEvent=ev || event;
+		alert(oEvent.keyCode);
+	}
+	oDiv.onkeydown=function(ev){
+		var oEvent=ev || event;
+		//alert(oEvent.keyCode);
+		if(oEvent.keyCode==38){
+			oDiv.style.height=oDiv.offsetHeight+10+"px";
+		}
+		if(oEvent.keyCode==40){
+			oDiv.style.height=oDiv.offsetHeight-10+"px";
+		}
+		console.log(1);
+	}
+	oDiv.onkeypress=function(ev){
+		console.log(2);
+	}
+	//上  -》38
+	//下 - 》40
+
+</script>
+</body>
+</html>

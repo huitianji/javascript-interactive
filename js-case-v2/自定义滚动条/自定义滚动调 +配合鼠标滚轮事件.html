@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+	body,div{ margin:0px; padding:0px;}
+	#parent{ width:400px; height:20px; background-color:#ccc; position:relative; margin:20px auto;}
+	#div1 { width:20px; height:20px; cursor:pointer; position:absolute; background-color:red; left:0px; top:0px;}
+	#div2 { width:300px; height:300px; border:1px solid #ff0000; overflow:hidden; position:relative;}
+	#div3 { position:absolute;}
+</style>
+</head>
+
+<body>
+</body>
+<div id="parent">
+	<div id="div1"></div>
+</div>
+<div id="div2">
+	<div id="div3">
+    	12月6日，阿里巴巴与海尔电器集团正式签约28.22亿港元投资后，阿里巴巴集团COO张勇(花名逍遥子)给杭州同事打了个电话，平时不苟言笑的他电话里语气显得很开心。“签约非常顺利”，他说。这距离2012年第一次与海尔接触刚好一年。
+
+　　阿里巴巴最开始与海尔的接触，是海尔在天猫开旗舰店。2012年9月天猫电器城尝试做C2B定制模式，其中一个合作伙伴就是海尔，对外推出的1万台定制液晶电视，仅仅48小时就售罄，相当于一个线下电器连锁店半年的销量。  尤其在这次活动中，海尔采用送装一体的服务，送货上门并且免费安装调试，还提供免费检测家中其他家电产品的运行状态、用电安全等服务。这一套体系就是海尔电器自有的物流品牌“日日顺”。
+
+　　当时天猫电器城的总经理谭飙(满楼)发现这一特点，尤其是海尔天猫店接入日日顺配送服务后，整个服务水平有了大幅提升。于是满楼就去海尔考察，对海尔整个布局、服务和供应链管理有了更全面的了解。
+
+　　从海尔考察结束后，谭飙就和负责天猫的张勇商量如何与海尔更深层次合作。去年的12月6日张勇动身去青岛第一次与海尔接触。在接触中张勇发现，日日顺的发展与支付宝非常像，都是集团原有业务的补充业务，然后做强大了以后独立发展。  这让张勇觉得“是一个很有意思的机会”，然后这项投资就作为保密项目谈了一年。
+
+　　日日顺对于阿里巴巴来说，无疑是一个特别好的合作伙伴，尤其是在菜鸟网络构建下，深入到三四线城市的毛细血管补充。所以阿里巴巴拿出了特别大的诚意，用总额28.22元港币投资以及建立合资公司的方式，重点扶持日日顺物流品牌。12月6日，阿里巴巴与海尔电器集团正式签约28.22亿港元投资后，阿里巴巴集团COO张勇(花名逍遥子)给杭州同事打了个电话，平时不苟言笑的他电话里语气显得很开心。“签约非常顺利”，他说。这距离2012年第一次与海尔接触刚好一年。
+
+　　阿里巴巴最开始与海尔的接触，是海尔在天猫开旗舰店。2012年9月天猫电器城尝试做C2B定制模式，其中一个合作伙伴就是海尔，对外推出的1万台定制液晶电视，仅仅48小时就售罄，相当于一个线下电器连锁店半年的销量。  尤其在这次活动中，海尔采用送装一体的服务，送货上门并且免费安装调试，还提供免费检测家中其他家电产品的运行状态、用电安全等服务。这一套体系就是海尔电器自有的物流品牌“日日顺”。
+
+　　当时天猫电器城的总经理谭飙(满楼)发现这一特点，尤其是海尔天猫店接入日日顺配送服务后，整个服务水平有了大幅提升。于是满楼就去海尔考察，对海尔整个布局、服务和供应链管理有了更全面的了解。
+
+　　从海尔考察结束后，谭飙就和负责天猫的张勇商量如何与海尔更深层次合作。去年的12月6日张勇动身去青岛第一次与海尔接触。在接触中张勇发现，日日顺的发展与支付宝非常像，都是集团原有业务的补充业务，然后做强大了以后独立发展。  这让张勇觉得“是一个很有意思的机会”，然后这项投资就作为保密项目谈了一年。
+
+　　日日顺对于阿里巴巴来说，无疑是一个特别好的合作伙伴，尤其是在菜鸟网络构建下，深入到三四线城市的毛细血管补充。所以阿里巴巴拿出了特别大的诚意，用总额28.22元港币投资以及建立合资公司的方式，重点扶持日日顺物流品牌。
+    </div>
+</div>
+<script>
+/*
+	封装一个通用函数事件
+*/
+function myAddEvent(obj,sEvent,fn){
+	if(obj.attachEvent){
+		obj.attachEvent("on"+sEvent,fn);
+	}else{
+		obj.addEventListener(sEvent,fn,false);
+	}
+}
+window.onload=function(){
+	var oDiv=document.getElementById("div1");
+	var oDiv2=document.getElementById("div2");
+	var oDiv3=document.getElementById("div3");
+	var oParent=document.getElementById("parent");
+	function onMouseWheel(ev){
+		var oEvent=ev || event; 
+		// IE  chrom
+		//wheelDelta 上 正
+		//-----------下 负 
+		//火狐下  detail  上   负
+		//---------------下   正
+		//alert(oEvent.wheelDelta);//ie下wheelDelta
+		var bDown=true;
+		bDown=oEvent.wheelDelta?oEvent.wheelDelta<0:oEvent.detail>0;
+		
+		if(bDown){
+			setLeft(oDiv.offsetLeft+10);
+		}else{
+			setLeft(oDiv.offsetLeft-10);
+		}
+		if(oEvent.preventDefault){
+			oEvent.preventDefault();
+		}
+		return false;
+	}				 
+	myAddEvent(oParent,"mousewheel",onMouseWheel);
+	myAddEvent(oParent,"DOMMouseScroll",onMouseWheel);
+
+	oDiv.onmousedown=function(ev){
+		var oEvent=ev || window.event;
+		var disX=oEvent.clientX-oDiv.offsetLeft;
+		var disY=oEvent.clientY-oDiv.offsetTop;
+		document.onmousemove=function(ev){
+			var oEvent=ev || event;
+			var l=oEvent.clientX-disX;
+			setLeft(l);
+		}
+		document.onmouseup=function(ev){
+			document.onmousemove=null;
+			document.onmouseup=null;
+		}
+		return false;
+	}
+	function setLeft(l){
+		if(l<0){
+			l=0;
+		}else if(l>oParent.offsetWidth-oDiv.offsetWidth){
+			l=oParent.offsetWidth-oDiv.offsetWidth;
+		}
+		oDiv.style.left=l+"px";
+		var scale=l/(oParent.offsetWidth-oDiv.offsetWidth);
+		oDiv3.style.top=-(oDiv3.offsetHeight-oDiv2.offsetHeight)*scale+"px";
+		//document.title=scale;
+	}
+	
+}
+</script>
+</html>
