@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a id="earn_icon"><img src="./static/images/def/icons/earn_icon.png" class="earnIcon"></a>
+</body>
+<script>
+    function Moveearn(eleId){
+        this.eleId = eleId ? eleId : "earn_icon";
+        this.init();
+    }
+    Moveearn.prototype = {
+        init:function () {
+            this.bindMenuMove();
+        },
+        bindMenuMove:function () {
+            var obj = document.getElementById(this.eleId);
+            var parentNode = window.self;
+            var pWidth = parentNode.innerWidth,pHeight = parentNode.innerHeight;
+            var is=false;//是否允许跳转
+            obj.addEventListener('touchstart',function(event){
+                //当只有一个手指时              .
+                if(event.touches.length == 1){
+                    //禁止浏览器默认事
+                    event.preventDefault();
+                }
+                var touch = event.targetTouches[0];
+                var disX = touch.clientX - obj.offsetLeft,disY = touch.clientY - obj.offsetTop;
+                var oWidth = obj.offsetWidth,oHeight = obj.offsetHeight;
+                is=true;//鼠标按下时默认允许
+                if(is){
+                    util.toPage("./lcList.html");
+                }
+                obj.addEventListener('touchmove',function(event){
+                    is=false;//发生移动时禁止
+                    var touch = event.targetTouches[0];
+                    obj.style.left = touch.clientX - disX  + 'px';
+                    obj.style.top = touch.clientY - disY + 'px';
+                    //左侧
+                    if(obj.offsetLeft <=0){
+                        obj.style.left = 0;
+                    }
+                    //右侧
+                    if(obj.offsetLeft >= pWidth -oWidth){
+                        obj.style.left =  pWidth - oWidth + 'px';
+                    }
+                    //上面
+                    if(obj.offsetTop <= 60){
+                        obj.style.top = 60 + 'px';
+                    }
+                    //下面
+                    if(obj.offsetTop >= pHeight - oHeight -60){
+                        obj.style.top =  pHeight - oHeight -60 + 'px';
+                    }
+                });
+                obj.addEventListener('touchend',function(event){
+                    obj.removeEventListener('touchmove',false);
+                    obj.removeEventListener('touchend',false);
+                    if (!is) {
+                        console.log("点击");
+                    }else {
+                        console.log("滑动");
+                    }
+                })
+            });
+        }
+    };
+    new Moveearn();
+</script>
+</html>
